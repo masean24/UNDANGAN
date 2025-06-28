@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Walimatul Khitan [Nama Anak]</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <div class="opening-screen" id="openingScreen">
+        <div class="opening-content">
+            <p class="opening-text">Undangan Walimatul Khitan</p>
+            <h1 class="opening-name">[Nama Anak yang Dikhiatankan]</h1>
+            <p class="to-text" id="toText">Kepada Yth: Tamu Undangan</p>
+            <button id="openInvitationBtn">
+                <i class="fas fa-envelope-open"></i> Buka Undangan
+            </button>
+        </div>
+    </div>
+
+    <div class="main-content" id="mainContent">
+        <audio id="backgroundMusic" loop>
+            <source src="music/khitan-background-song.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+
+        <section class="hero-section" id="hero-section">
+            <img src="img/ornament-lantern-left.png" alt="Lantern Left" class="ornament ornament-lantern-left">
+            <img src="img/ornament-lantern-right.png" alt="Lantern Right" class="ornament ornament-lantern-right">
+
+            <div class="hero-content">
+                <p class="section-title-small">Undangan</p>
+                <h2 class="section-title-large">Walimatul Khitan</h2>
+                <div class="profile-photo-container">
+                    <img src="img/child-main-photo.png" alt="Foto [Nama Anak]" class="profile-photo">
+                    </div>
+                <p class="invitation-text">Dengan mengharap ridho-Nya, kami mengundang Bapak/Saudara pada acara Walimatul Khitan putra pertama kami,</p>
+                <h3 class="child-name">[Nama Anak yang Dikhiatankan]</h3>
+                <p class="parent-names">Putra dari Bapak [Nama Ayah] & Ibu [Nama Ibu]</p>
+            </div>
+            
+            <img src="img/pattern-star-bottom-left.png" alt="Pattern Left" class="ornament ornament-star-bottom-left">
+            <img src="img/pattern-star-bottom-right.png" alt="Pattern Right" class="ornament ornament-star-bottom-right">
+        </section>
+
+        <section class="event-details-section" id="event-details-section">
+            <div class="countdown-container">
+                <h3 class="countdown-title">Menghitung Hari Bahagia</h3>
+                <div class="countdown" id="countdown">
+                    </div>
+            </div>
+            <div class="event-cards-container">
+                <div class="event-card">
+                    <i class="fas fa-calendar-alt icon-large"></i>
+                    <h4>Hari & Tanggal</h4>
+                    <p>Sabtu, 12 Juli 2025</p>
+                </div>
+                <div class="event-card">
+                    <i class="fas fa-clock icon-large"></i>
+                    <h4>Pukul</h4>
+                    <p>10.00 WIB - Selesai</p>
+                </div>
+                <div class="event-card">
+                    <i class="fas fa-map-marker-alt icon-large"></i>
+                    <h4>Lokasi</h4>
+                    <p>[Nama Tempat/Alamat Lengkap]</p>
+                    <a href="#" target="_blank" class="btn-maps" id="googleMapsLink">
+                        <i class="fas fa-map"></i> Lihat Peta
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <section class="guestbook-section" id="guestbook-section">
+            <h2>Doa & Ucapan</h2>
+            <p>Berikan doa dan ucapan terbaik Anda untuk [Nama Anak].</p>
+            <form id="guestbookForm">
+                <input type="text" id="guestName" placeholder="Nama Anda" required>
+                <textarea id="guestMessage" rows="4" placeholder="Tulis ucapan Anda di sini..." required></textarea>
+                <button type="submit">Kirim Ucapan</button>
+            </form>
+            <div class="messages-display" id="messagesDisplay">
+                <h4>Ucapan dari Tamu:</h4>
+                <div class="no-messages-placeholder" id="noMessagesPlaceholder">Belum ada ucapan. Jadilah yang pertama!</div>
+            </div>
+        </section>
+
+        <section class="closing-section" id="closing-section">
+            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
+            <h3>Terima Kasih Atas Doa & Restu Anda</h3>
+            <p class="signature">Hormat Kami,</p>
+            <p class="family-name">Keluarga Besar [Nama Ayah] & [Nama Ibu]</p>
+        </section>
+
+        <div class="fixed-nav" id="fixedNav">
+            <a href="#hero-section"><i class="fas fa-home"></i> Home</a>
+            <a href="#event-details-section"><i class="fas fa-calendar-alt"></i> Acara</a>
+            <a href="#guestbook-section"><i class="fas fa-comments"></i> Ucapan</a>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
