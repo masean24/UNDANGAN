@@ -1,3 +1,21 @@
+// 1. Ganti dengan konfigurasi Firebase Anda sendiri dari Konsol Firebase
+const firebaseConfig = {
+  apiKey: "AIzaSyAlk05b2hP7vy97Aw-sd-3CVZbpwzzIhns",
+  authDomain: "undangandanish.firebaseapp.com",
+  projectId: "undangandanish",
+  storageBucket: "undangandanish.firebasestorage.app",
+  messagingSenderId: "423545198878",
+  appId: "1:423545198878:web:0145835ab3e8d8801ad10f",
+  measurementId: "G-B48MQBMQHS"
+};
+
+// 2. Inisialisasi Firebase
+firebase.initializeApp(firebaseConfig);
+
+// 3. Dapatkan referensi ke layanan Firestore
+const db = firebase.firestore();
+const ucapanCollection = db.collection('ucapan'); // 'ucapan' adalah nama koleksi Anda di Firestore
+
 let musicPlaying = false;
 const music = document.getElementById('backgroundMusic');
 const musicBtn = document.getElementById('musicBtn');
@@ -7,7 +25,10 @@ const eventDate = new Date("Jul 15, 2025 09:00:00").getTime();
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
-    music.volume = 0.3; 
+    music.volume = 0.3; // Atur volume awal
+    
+    // TIDAK ADA KODE music.play() DI SINI
+    // Musik tidak akan otomatis putar saat DOMContentLoaded
     
     // Get recipient name from URL parameter
     const urlParams = new URLSearchParams(window.location.search);
@@ -34,7 +55,7 @@ function openInvitation() {
     document.getElementById('musicBtn').style.display = 'flex'; // Tampilkan kontrol musik
     document.querySelector('.bottom-nav').style.display = 'flex'; // Tampilkan navigasi bawah
 
-    // Coba putar musik secara otomatis setelah pengguna berinteraksi
+    // Musik akan diputar DI SINI, setelah tombol "Buka Undangan" diklik
     if (!musicPlaying) {
         music.play().then(() => {
             musicPlaying = true;
@@ -42,7 +63,7 @@ function openInvitation() {
             musicBtn.style.opacity = '1';
         }).catch(e => {
             console.log('Music autoplay prevented after interaction:', e);
-            musicBtn.innerHTML = '🎵'; // Tetap tampilkan ikon not musik jika gagal putar
+            musicBtn.innerHTML = '🎵'; // Tetap tampilkan ikon not musik jika gagal play
         });
     }
 
@@ -87,79 +108,122 @@ function showSection(sectionId, clickedElement) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function submitUcapan(event) {
+async function submitUcapan(event) { // Tambahkan 'async' di sini
     event.preventDefault();
     
-    const formData = new FormData(event.target);
-    const senderName = formData.get('senderName');
-    const ucapanMessage = formData.get('ucapanMessage');
+    const senderName = document.getElementById('senderName').value; // Ambil nilai langsung dari input
+    const ucapanMessage = document.getElementById('ucapanMessage').value; // Ambil nilai langsung dari textarea
 
-    const ucapan = {
-        id: Date.now(),
-        sender: senderName,
-        message: ucapanMessage,
-        timestamp: new Date().toLocaleString('id-ID', {
-            day: '2-digit',
-            month: 'long',
-            year: 'numeric',
-            hour: '2-digit',
-            minute: '2-digit'
-        })
-    };
-
-    // Get existing ucapan from localStorage or initialize empty array
-    const storedUcapanJSON = localStorage.getItem('ucapanList');
-    let savedUcapan = storedUcapanJSON ? JSON.parse(storedUcapanJSON) : [];
-    
-    savedUcapan.unshift(ucapan); // Add new ucapan to the beginning of the array
-    
-    // Save updated ucapan list to localStorage
-    localStorage.setItem('ucapanList', JSON.stringify(savedUcapan));
-
-    const resultDiv = document.getElementById('ucapanResult');
-    resultDiv.innerHTML = `
-        <div style="background: #d4f7d4; color: #2d5a2d; border: 2px solid #90ee90; border-radius: 15px; padding: 20px;">
-            <h4 style="margin-bottom: 10px; font-size: 18px; color: #2d5a2d;">✅ Jazakallahu Khairan, ${senderName}!</h4>
-            <p style="margin-bottom: 10px;">Ucapan dan doa Anda telah tersimpan dengan baik.</p>
-            <p style="font-style: italic; color: #3a7a3a;">"Semoga Allah membalas kebaikan Anda dan doa Anda menjadi berkah untuk Muhammad Arif! 🤲"</p>
-        </div>
-    `;
-    
-    resultDiv.style.display = 'block';
-    
-    event.target.reset(); // Reset the form fields
-    
-    loadUcapan(); // Reload ucapan display from localStorage
-    
-    resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    
-    setTimeout(() => {
-        resultDiv.style.display = 'none';
-    }, 5000);
-}
-
-function loadUcapan() {
-    const ucapanContainer = document.getElementById('ucapanContainer');
-    const storedUcapanJSON = localStorage.getItem('ucapanList');
-    const ucapanList = storedUcapanJSON ? JSON.parse(storedUcapanJSON) : [];
-    
-    if (ucapanList.length === 0) {
-        ucapanContainer.innerHTML = `
-            <div class="no-ucapan">
-                <div class="icon">💌</div>
-                <p>Belum ada ucapan dan doa. Jadilah yang pertama memberikan ucapan tulus Anda untuk Muhammad Arif!</p>
-            </div>
-        `;
+    if (!senderName || !ucapanMessage) {
+        alert('Nama dan ucapan tidak boleh kosong!');
         return;
     }
 
-    ucapanContainer.innerHTML = ucapanList.map(ucapan => `
-        <div class="ucapan-card">
-            <div class="ucapan-sender">💝 ${ucapan.sender}</div>
-            <div class="ucapan-message">"${ucapan.message}"</div>
-            <div class="ucapan-time">${ucapan.timestamp}</div>
-        </div>
-    `).join('');
+    try {
+        // Tambahkan data ke Firestore
+        await ucapanCollection.add({
+            sender: senderName,
+            message: ucapanMessage,
+            timestamp: firebase.firestore.FieldValue.serverTimestamp() // Firestore akan mengisi timestamp otomatis
+        });
+
+        const resultDiv = document.getElementById('ucapanResult');
+        resultDiv.innerHTML = `
+            <div style="background: #d4f7d4; color: #2d5a2d; border: 2px solid #90ee90; border-radius: 15px; padding: 20px;">
+                <h4 style="margin-bottom: 10px; font-size: 18px; color: #2d5a2d;">✅ Jazakallahu Khairan, ${senderName}!</h4>
+                <p style="margin-bottom: 10px;">Ucapan dan doa Anda telah terkirim dan tersimpan.</p>
+                <p style="font-style: italic; color: #3a7a3a;">"Semoga Allah membalas kebaikan Anda dan doa Anda menjadi berkah untuk Muhammad Arif! 🤲"</p>
+            </div>
+        `;
+        resultDiv.style.display = 'block';
+        
+        // Reset form
+        document.getElementById('senderName').value = '';
+        document.getElementById('ucapanMessage').value = '';
+        
+        // Reload ucapan display
+        loadUcapan(); // Panggil ulang untuk menampilkan ucapan yang baru terkirim
+        
+        resultDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        
+        setTimeout(() => {
+            resultDiv.style.display = 'none';
+        }, 5000);
+
+    } catch (error) {
+        console.error("Error writing document: ", error);
+        const resultDiv = document.getElementById('ucapanResult');
+        resultDiv.innerHTML = `
+            <div style="background: #f7d4d4; color: #5a2d2d; border: 2px solid #ee9090; border-radius: 15px; padding: 20px;">
+                <h4>❌ Terjadi kesalahan!</h4>
+                <p>Gagal mengirim ucapan. Mohon coba lagi. (${error.message})</p>
+            </div>
+        `;
+        resultDiv.style.display = 'block';
+        setTimeout(() => { resultDiv.style.display = 'none'; }, 5000);
+    }
+}
+
+async function loadUcapan() { // Tambahkan 'async' di sini
+    const ucapanContainer = document.getElementById('ucapanContainer');
+    ucapanContainer.innerHTML = '<div style="text-align: center; color: #a0927a;">Memuat ucapan...</div>'; // Tampilan loading
+
+    try {
+        // Ambil semua dokumen dari koleksi 'ucapan', urutkan berdasarkan timestamp terbaru
+        const snapshot = await ucapanCollection.orderBy('timestamp', 'desc').get();
+        const ucapanList = [];
+        
+        snapshot.forEach(doc => {
+            const data = doc.data();
+            // Format timestamp dari Firebase Timestamp menjadi string yang bisa dibaca
+            let formattedTimestamp = 'Belum tersedia';
+            if (data.timestamp && data.timestamp.toDate) { // Pastikan timestamp adalah Firebase Timestamp
+                formattedTimestamp = data.timestamp.toDate().toLocaleString('id-ID', {
+                    day: '2-digit',
+                    month: 'long',
+                    year: 'numeric',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            } else if (data.timestamp) { // Jika timestamp sudah string (misal dari manual entry)
+                 formattedTimestamp = data.timestamp;
+            }
+
+            ucapanList.push({
+                id: doc.id,
+                sender: data.sender,
+                message: data.message,
+                timestamp: formattedTimestamp
+            });
+        });
+        
+        if (ucapanList.length === 0) {
+            ucapanContainer.innerHTML = `
+                <div class="no-ucapan">
+                    <div class="icon">💌</div>
+                    <p>Belum ada ucapan dan doa. Jadilah yang pertama memberikan ucapan tulus Anda untuk Muhammad Arif!</p>
+                </div>
+            `;
+            return;
+        }
+
+        ucapanContainer.innerHTML = ucapanList.map(ucapan => `
+            <div class="ucapan-card">
+                <div class="ucapan-sender">💝 ${ucapan.sender}</div>
+                <div class="ucapan-message">"${ucapan.message}"</div>
+                <div class="ucapan-time">${ucapan.timestamp}</div>
+            </div>
+        `).join('');
+
+    } catch (error) {
+        console.error("Error getting documents: ", error);
+        ucapanContainer.innerHTML = `
+            <div class="no-ucapan" style="color: #5a2d2d; border-color: #ee9090; background: #f7d4d4;">
+                <div class="icon" style="color: #d45a5a;">⚠️</div>
+                <p>Gagal memuat ucapan. Mohon periksa koneksi atau konfigurasi Firebase Anda.</p>
+            </div>
+        `;
+    }
 }
 
 // Countdown Timer Logic
@@ -227,6 +291,7 @@ function saveEventToCalendar() {
 
     window.open(googleCalendarUrl, '_blank'); // Open in new tab
 }
+
 
 // Auto-generated by model: These lines are for ripple effect and are better in script.js
 document.addEventListener('click', function(e) {
