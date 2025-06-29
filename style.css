@@ -432,7 +432,8 @@ body::before {
     padding: 18px 0;
     border-radius: 30px 30px 0 0;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
-    display: none; /* Hidden by default, shown after opening */
+    display: flex; /* Default to flex for mobile */
+    z-index: 999; /* Ensure it's above other content but below cover */
 }
 
 .nav-container {
@@ -442,6 +443,7 @@ body::before {
     max-width: 550px; /* Slightly wider nav */
     margin: 0 auto;
     padding: 0 25px;
+    width: 100%; /* Make it fill container width */
 }
 
 .nav-item {
@@ -721,4 +723,101 @@ body::before {
 @keyframes slideInFromTop {
     0% { transform: translateY(-50px); opacity: 0; }
     100% { transform: translateY(0); opacity: 1; }
+}
+
+/* Responsive adjustment for screens wider than mobile */
+@media (min-width: 769px) {
+    .bottom-nav {
+        /* Make it a floating menu button at bottom right */
+        position: fixed; /* Tetap fixed */
+        bottom: 30px; /* Jarak dari bawah */
+        right: 30px; /* Jarak dari kanan */
+        left: auto; /* Hilangkan setting left */
+        width: 70px; /* Ukuran tombol bulat */
+        height: 70px; /* Ukuran tombol bulat */
+        border-radius: 50%; /* Bulat */
+        background: rgba(118, 93, 72, 0.9); /* Latar belakang tombol */
+        padding: 0; /* Hilangkan padding */
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        display: flex; /* Tetap flex untuk menengahkan ikon */
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        overflow: visible; /* Penting: Ubah ke visible agar menu bisa muncul di luar lingkaran */
+    }
+
+    .bottom-nav:hover {
+        background: rgba(139, 115, 85, 0.95); /* Sedikit gelap saat hover */
+        transform: scale(1.05);
+    }
+
+    .nav-container {
+        flex-direction: column; /* Ubah arah item nav menjadi vertikal */
+        align-items: flex-start; /* Item nav rata kiri dalam menu */
+        justify-content: flex-start;
+        padding: 10px; /* Padding untuk daftar menu */
+        max-width: none; /* Hilangkan max-width */
+        height: auto;
+        opacity: 0; /* Sembunyikan item nav secara default */
+        pointer-events: none; /* Nonaktifkan interaksi saat tersembunyi */
+        transform: translateY(10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+
+        /* Positioning for the dropdown menu */
+        position: absolute;
+        bottom: 80px; /* Posisi di atas tombol bulat */
+        right: 0; /* Sesuaikan posisi horizontal */
+        background: rgba(118, 93, 72, 0.98); /* Background menu dropdown */
+        border-radius: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        min-width: 150px; /* Lebar minimum menu */
+        padding: 10px 0;
+    }
+
+    .bottom-nav:hover .nav-container {
+        opacity: 1; /* Tampilkan item nav saat hover pada tombol utama */
+        pointer-events: all; /* Aktifkan interaksi */
+        transform: translateY(0);
+    }
+
+    .nav-item {
+        margin: 5px 0; /* Jarak antar item nav */
+        padding: 8px 15px; /* Padding untuk setiap item */
+        width: 100%; /* Penuhi lebar kontainer menu */
+        border-radius: 8px;
+        /* background: rgba(255, 255, 255, 0.1); Hapus background per item jika tidak ingin */
+        color: white;
+        text-align: left; /* Teks item rata kiri */
+        flex-direction: row; /* Ikon dan teks sejajar horizontal */
+        justify-content: flex-start; /* Mulai dari kiri */
+        font-size: 14px; /* Ukuran font item */
+    }
+
+    .nav-item:hover {
+        background: rgba(255, 255, 255, 0.2); /* Background hover untuk item menu */
+        transform: none; /* Hilangkan translateY saat hover pada item */
+        text-shadow: none;
+    }
+
+    .nav-item .nav-icon {
+        font-size: 20px; /* Ukuran ikon di menu */
+        margin-right: 10px; /* Jarak ikon dari teks */
+        margin-bottom: 0;
+    }
+
+    /* Tambahkan ikon menu utama di tombol floating */
+    .bottom-nav::before {
+        content: '☰'; /* Ikon hamburger */
+        position: absolute;
+        font-size: 30px;
+        color: white;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        pointer-events: none; /* Agar tidak menghalangi klik pada item nav */
+    }
+
+    .bottom-nav:hover::before {
+        display: none; /* Sembunyikan ikon hamburger saat menu terbuka */
+    }
 }
