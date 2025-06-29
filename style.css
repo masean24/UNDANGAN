@@ -91,13 +91,15 @@ body::before {
     transform: rotate(-45deg);
 }
 
+/* ... (kode CSS lainnya tetap sama) ... */
+
 .cover-image-frame {
     width: 180px;
-    height: 220px; /* Taller for the arched top */
+    height: 190px; /* Diubah: sedikit lebih tinggi dari lebar untuk tetap ada ruang lengkungan, tapi tidak terlalu jomplang */
     margin: 0 auto 30px;
     background: linear-gradient(45deg, #e7dec2, #f5f2e8); /* Softer gradient */
     border: 8px solid #c9a876; /* Muted gold */
-    border-radius: 50% / 40% 40% 10% 10%; /* Creates the arched top */
+    border-radius: 40% / 30% 30% 10% 10%; /* Diubah: Kurangi kelengkungan atas agar tidak terlalu memotong, dan buat lebih simetris */
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(100, 80, 60, 0.2); /* Softer shadow */
     display: flex;
@@ -106,12 +108,15 @@ body::before {
 }
 
 .cover-image-frame img {
-    width: calc(100% - 16px); /* Adjust for border */
-    height: calc(100% - 16px); /* Adjust for border */
-    object-fit: cover;
-    border-radius: 50% / 40% 40% 10% 10%; /* Match frame shape */
-    transform: translateY(8px); /* Adjust to fit well within arch */
+    width: calc(100% - 16px); /* Mengisi lebar wadah, dikurangi border */
+    height: calc(100% - 16px); /* Mengisi tinggi wadah, dikurangi border */
+    object-fit: cover; /* Tetap cover untuk mengisi penuh */
+    object-position: center top; /* Fokuskan bagian atas gambar */
+    border-radius: 40% / 30% 30% 10% 10%; /* Dicocokkan dengan border-radius wadah */
+    transform: translateY(0px); /* Diubah: Hapus translasi Y, biarkan object-position yang mengatur */
 }
+
+/* ... (kode CSS lainnya tetap sama) ... */
 
 .cover-subtitle {
     font-size: 18px;
