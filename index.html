@@ -3,105 +3,216 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Undangan Walimatul Khitan [Nama Anak]</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@300;400;600&family=Amiri:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <title>Walimatul Khitan - Muhammad Arif</title>
+    <link href="https://fonts.googleapis.com/css2?family=Scheherazade+New:wght@400;700&family=Amiri:wght@400;700&family=Lateef&family=Great+Vibes&family=Noto+Serif:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <div id="cover-page">
+            <div class="cover-content">
+                <div class="cover-image-frame">
+                    <img src="muhammad_arif_photo.jpg" alt="Muhammad Arif"> 
+                </div>
+                
+                <div class="cover-subtitle">Walimatul Khitan dari</div>
+                <div class="cover-name">Muhammad Arif</div>
+                <div class="cover-subtitle">Putra dari</div>
+                <div class="cover-subtitle">Bapak Ahmad Fauzi & Ibu Siti Aminah</div>
 
-    <div class="opening-screen" id="openingScreen">
-        <div class="opening-content">
-            <p class="opening-text">Undangan Walimatul Khitan</p>
-            <h1 class="opening-name">[Nama Anak yang Dikhiatankan]</h1>
-            <p class="to-text" id="toText">Kepada Yth: Tamu Undangan</p>
-            <button id="openInvitationBtn">
-                <i class="fas fa-envelope-open"></i> Buka Undangan
-            </button>
+                <div class="cover-greeting">
+                    Kepada Yth: <br>
+                    <span id="coverRecipientName" class="recipient-name">Bapak/Ibu/Saudara/i</span>
+                    <br>Di Tempat
+                </div>
+
+                <a href="javascript:void(0)" class="smaller-open-button" onclick="openInvitation()">
+                    <span style="font-size: 20px;">💌</span> Buka Undangan
+                </a>
+            </div>
         </div>
-    </div>
 
-    <div class="main-content" id="mainContent">
-        <audio id="backgroundMusic" loop>
-            <source src="music/khitan-background-song.mp3" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
+        <div class="main-content">
+            <div class="floral-decoration floral-1"></div>
+            <div class="floral-decoration floral-2"></div>
+            <div class="floral-decoration floral-3"></div>
+            <div class="floral-decoration floral-4"></div>
 
-        <section class="hero-section" id="hero-section">
-            <img src="img/ornament-lantern-left.png" alt="Lantern Left" class="ornament ornament-lantern-left">
-            <img src="img/ornament-lantern-right.png" alt="Lantern Right" class="ornament ornament-lantern-right">
+            <button class="music-control" onclick="toggleMusic()" id="musicBtn">🎵</button>
+            <audio id="backgroundMusic" loop>
+                <source src="https://www.soundjay.com/misc/sounds/bells-tibetan-short.mp3" type="audio/mpeg"> 
+            </audio>
 
-            <div class="hero-content">
-                <p class="section-title-small">Undangan</p>
-                <h2 class="section-title-large">Walimatul Khitan</h2>
-                <div class="profile-photo-container">
-                    <img src="img/child-main-photo.png" alt="Foto [Nama Anak]" class="profile-photo">
+            <div id="home" class="section active">
+                <div class="header">
+                    <div class="bismillah">بِسْمِ اللّٰهِ الرَّحْمٰنِ الرَّحِيْمِ</div>
+                    <div class="invitation-text">
+                        Kepada Yth: <br>
+                        <strong id="recipientName" style="color: #7a5e43; font-size: 20px;">Bapak/Ibu/Saudara/i</strong>
+                        <br><br>
+                        Dengan memohon rahmat dan ridho Allah Subhanahu Wa Ta'ala, 
+                        kami bermaksud mengundang Anda dalam acara syukuran 
+                        Walimatul Khitan putra kami yang tercinta:
                     </div>
-                <p class="invitation-text">Dengan mengharap ridho-Nya, kami mengundang Bapak/Saudara pada acara Walimatul Khitan putra pertama kami,</p>
-                <h3 class="child-name">[Nama Anak yang Dikhiatankan]</h3>
-                <p class="parent-names">Putra dari Bapak [Nama Ayah] & Ibu [Nama Ibu]</p>
-            </div>
-            
-            <img src="img/pattern-star-bottom-left.png" alt="Pattern Left" class="ornament ornament-star-bottom-left">
-            <img src="img/pattern-star-bottom-right.png" alt="Pattern Right" class="ornament ornament-star-bottom-right">
-        </section>
-
-        <section class="event-details-section" id="event-details-section">
-            <div class="countdown-container">
-                <h3 class="countdown-title">Menghitung Hari Bahagia</h3>
-                <div class="countdown" id="countdown">
+                    
+                    <div class="child-photo-main">
+                        <img src="muhammad_arif_photo.jpg" alt="Muhammad Arif"> 
                     </div>
-            </div>
-            <div class="event-cards-container">
-                <div class="event-card">
-                    <i class="fas fa-calendar-alt icon-large"></i>
-                    <h4>Hari & Tanggal</h4>
-                    <p>Sabtu, 12 Juli 2025</p>
+                    
+                    <div class="child-name">Muhammad Arif</div>
+                    <div class="parents-info">Putra dari</div>
+                    <div class="parents-info"><strong>Bapak Ahmad Fauzi & Ibu Siti Aminah</strong></div>
                 </div>
-                <div class="event-card">
-                    <i class="fas fa-clock icon-large"></i>
-                    <h4>Pukul</h4>
-                    <p>10.00 WIB - Selesai</p>
-                </div>
-                <div class="event-card">
-                    <i class="fas fa-map-marker-alt icon-large"></i>
-                    <h4>Lokasi</h4>
-                    <p>[Nama Tempat/Alamat Lengkap]</p>
-                    <a href="#" target="_blank" class="btn-maps" id="googleMapsLink">
-                        <i class="fas fa-map"></i> Lihat Peta
+
+                <div class="combined-event-section">
+                    <div class="event-icon-elegant" style="margin-bottom: 0;">🕌</div>
+                    <div class="section-title" style="margin-bottom: 20px;">Walimatul Khitan</div>
+                    
+                    <div class="section-intro-text">
+                        Walimatul Khitan kami akan diselenggarakan pada:
+                    </div>
+
+                    <div id="countdown" class="countdown-timer-combined">
+                        <div class="countdown-item-small"><span id="days">00</span><span>Hari</span></div>
+                        <div class="countdown-item-small"><span id="hours">00</span><span>Jam</span></div>
+                        <div class="countdown-item-small"><span id="minutes">00</span><span>Menit</span></div>
+                        <div class="countdown-item-small"><span id="seconds">00</span><span>Detik</span></div>
+                    </div>
+
+                    <div class="event-date-display">
+                        Sabtu, 15 Juli 2025
+                    </div>
+
+                    <div class="event-time-location">
+                        <p><span class="label-bold">Pukul:</span> 09.00 WIB - Selesai</p>
+                        <p><span class="label-bold">Bertempat di:</span></p>
+                        <span class="location-name">Masjid Al-Ikhlas</span>
+                        <span class="address-text">Jl. Mawar No. 123, Jakarta Selatan</span>
+                    </div>
+
+                    <a href="javascript:void(0)" class="save-to-calendar-button" onclick="saveEventToCalendar()">
+                        <span style="font-size: 20px;">🗓️</span> Klik Simpan di Kalender
                     </a>
                 </div>
             </div>
-        </section>
 
-        <section class="guestbook-section" id="guestbook-section">
-            <h2>Doa & Ucapan</h2>
-            <p>Berikan doa dan ucapan terbaik Anda untuk [Nama Anak].</p>
-            <form id="guestbookForm">
-                <input type="text" id="guestName" placeholder="Nama Anda" required>
-                <textarea id="guestMessage" rows="4" placeholder="Tulis ucapan Anda di sini..." required></textarea>
-                <button type="submit">Kirim Ucapan</button>
-            </form>
-            <div class="messages-display" id="messagesDisplay">
-                <h4>Ucapan dari Tamu:</h4>
-                <div class="no-messages-placeholder" id="noMessagesPlaceholder">Belum ada ucapan. Jadilah yang pertama!</div>
+            <div id="event" class="section">
+                <div class="event-details" style="background: rgba(255, 255, 255, 0.95);">
+                    <h2 style="text-align: center; color: #7a5e43; margin-bottom: 35px; font-family: 'Scheherazade New', serif;">Detail Acara Lainnya</h2>
+                    
+                    <div style="margin-bottom: 35px; background: #fefdfb; padding: 25px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px dashed #e8dcc0;">
+                        <h3 style="color: #c9a876; margin-bottom: 18px; font-family: 'Amiri', serif;">📿 Sunat & Doa Bersama</h3>
+                        <p style="margin-bottom: 8px;"><strong>Waktu:</strong> 08.00 - 09.00 WIB</p>
+                        <p style="margin-bottom: 8px;"><strong>Tempat:</strong> Rumah Sakit Bhakti Husada</p>
+                        <p>Jl. Melati No. 45, Jakarta Selatan</p>
+                    </div>
+
+                    <div style="margin-bottom: 35px; background: #fefdfb; padding: 25px; border-radius: 18px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px dashed #e8dcc0;">
+                        <h3 style="color: #c9a876; margin-bottom: 18px; font-family: 'Amiri', serif;">🍽️ Syukuran & Makan Bersama</h3>
+                        <p style="margin-bottom: 8px;"><strong>Waktu:</strong> 09.00 - 12.00 WIB</p>
+                        <p style="margin-bottom: 8px;"><strong>Tempat:</strong> Masjid Al-Ikhlas</p>
+                        <p>Jl. Mawar No. 123, Jakarta Selatan</p>
+                    </div>
+
+                    <div style="background: #eef1f4; padding: 25px; border-radius: 20px; text-align: center; border: 1px solid #d4e0e8; box-shadow: inset 0 2px 5px rgba(0,0,0,0.05);">
+                        <p style="color: #7a5e43; font-style: italic; font-size: 17px;">
+                            "Dan barangsiapa yang mengundang kepada petunjuk, 
+                            maka baginya pahala seperti pahala orang-orang yang mengikutinya"
+                        </p>
+                        <p style="color: #6b5b47; margin-top: 12px; font-size: 14px;"><small>- HR. Muslim</small></p>
+                    </div>
+                </div>
             </div>
-        </section>
 
-        <section class="closing-section" id="closing-section">
-            <p>Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir untuk memberikan doa restu.</p>
-            <h3>Terima Kasih Atas Doa & Restu Anda</h3>
-            <p class="signature">Hormat Kami,</p>
-            <p class="family-name">Keluarga Besar [Nama Ayah] & [Nama Ibu]</p>
-        </section>
+            <div id="location" class="section">
+                <div class="map-section">
+                    <div class="map-header">
+                        <h2>📍 Lokasi Acara</h2>
+                        <p>Masjid Al-Ikhlas</p>
+                        <p>Jl. Mawar No. 123, Jakarta Selatan</p>
+                    </div>
+                    <iframe 
+                        id="map"
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.746315467449!2d106.79440731476297!3d-6.300037895439167!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69ee8d32ac207b%3A0x6c05e2085c8f81b4!2sJakarta%20Selatan%2C%20Kota%20Jakarta%20Selatan%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sid!2sid!4v1635000000000!5m2!1sid!2sid"
+                        allowfullscreen=""
+                        loading="lazy">
+                    </iframe>
+                </div>
 
-        <div class="fixed-nav" id="fixedNav">
-            <a href="#hero-section"><i class="fas fa-home"></i> Home</a>
-            <a href="#event-details-section"><i class="fas fa-calendar-alt"></i> Acara</a>
-            <a href="#guestbook-section"><i class="fas fa-comments"></i> Ucapan</a>
+                <div class="event-details" style="text-align: center;">
+                    <h3 style="color: #7a5e43; margin-bottom: 25px; font-family: 'Scheherazade New', serif;">Petunjuk Arah</h3>
+                    <p style="margin-bottom: 18px;">📍 Dari Terminal Blok M: Sekitar 15 menit berkendara</p>
+                    <p style="margin-bottom: 18px;">🚌 Dari Stasiun MRT Blok M: Dapat dijangkau dengan bus TransJakarta koridor 1</p>
+                    <p style="margin-bottom: 25px;">🚗 Area parkir yang luas tersedia di sekitar masjid untuk kenyamanan Anda.</p>
+                    
+                    <a href="https://maps.google.com/maps?q=Jakarta+Selatan" target="_blank" 
+                       style="display: inline-block; background: #c9a876; color: white; padding: 14px 30px; 
+                              border-radius: 30px; text-decoration: none; font-weight: bold; font-size: 17px;
+                              transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.1);"
+                       onmouseover="this.style.background='#8b7355'; this.style.transform='translateY(-2px)'"
+                       onmouseout="this.style.background='#c9a876'; this.style.transform='translateY(0)'">
+                        🗺️ Buka di Google Maps
+                    </a>
+                </div>
+            </div>
+
+            <div id="ucapan" class="section">
+                <div class="rsvp-section">
+                    <h2 style="text-align: center; color: #7a5e43; margin-bottom: 25px; font-family: 'Scheherazade New', serif;">
+                        <span class="rsvp-header-icon">💝</span> Berikan Ucapan & Doa
+                    </h2>
+                    <p style="text-align: center; color: #6b5b47; margin-bottom: 35px; font-size: 16px;">
+                        Berikan ucapan dan doa terbaik Anda untuk ananda Muhammad Arif agar senantiasa menjadi anak yang sholeh dan bermanfaat. Aamiin.
+                    </p>
+
+                    <form class="rsvp-form" onsubmit="submitUcapan(event)">
+                        <div class="form-group">
+                            <label for="senderName">Nama Anda</label>
+                            <input type="text" id="senderName" name="senderName" required placeholder="Contoh: Budi Santoso">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ucapanMessage">Ucapan & Doa</label>
+                            <textarea id="ucapanMessage" name="ucapanMessage" rows="5" required
+                                    placeholder="Tuliskan ucapan dan doa tulus Anda di sini..."></textarea>
+                        </div>
+
+                        <button type="submit" class="submit-btn">💌 Kirim Ucapan & Doa</button>
+                    </form>
+
+                    <div id="ucapanResult" style="margin-top: 25px; padding: 18px; border-radius: 12px; display: none; text-align: center;"></div>
+
+                    <div class="ucapan-list" style="margin-top: 45px;">
+                        <h3 style="text-align: center; color: #7a5e43; margin-bottom: 30px; font-family: 'Scheherazade New', serif;">📜 Ucapan & Doa dari Tamu Tercinta</h3>
+                        <div id="ucapanContainer">
+                            </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bottom-nav">
+                <div class="nav-container">
+                    <a href="#home" class="nav-item active" onclick="showSection('home', this)">
+                        <div class="nav-icon">🏠</div>
+                        <div>Home</div>
+                    </a>
+                    <a href="#event" class="nav-item" onclick="showSection('event', this)">
+                        <div class="nav-icon">📅</div>
+                        <div>Acara</div>
+                    </a>
+                    <a href="#location" class="nav-item" onclick="showSection('location', this)">
+                        <div class="nav-icon">📍</div>
+                        <div>Lokasi</div>
+                    </a>
+                    <a href="#ucapan" class="nav-item" onclick="showSection('ucapan', this)">
+                        <div class="nav-icon">💝</div>
+                        <div>Ucapan</div>
+                    </a>
+                </div>
+            </div>
         </div>
     </div>
 
-    <script src="js/script.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>
