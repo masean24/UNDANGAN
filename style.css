@@ -413,15 +413,10 @@ body::before {
     align-items: center;
     justify-content: center;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    display: none;
+    /* display: none; -> Ini akan diatur di JS, muncul setelah open invitation */
 }
 
-.music-control:hover {
-    transform: scale(1.15) rotate(10deg);
-    background: rgba(139, 115, 85, 0.95);
-}
-
-/* Bottom Navigation (Always like mobile) */
+/* Bottom Navigation (Mobile & Desktop - Always fixed at bottom) */
 .bottom-nav {
     position: fixed;
     bottom: 0;
@@ -432,34 +427,36 @@ body::before {
     padding: 18px 0;
     border-radius: 30px 30px 0 0;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
-    display: flex; /* Always display as flex */
+    display: flex; /* Selalu tampilkan sebagai flex */
     z-index: 999;
+    max-width: none; /* Hilangkan max-width untuk layar lebar */
+    margin: 0; /* Hapus margin auto */
 }
 
 .nav-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 550px; /* Batasi lebar agar tidak terlalu lebar di desktop */
-    margin: 0 auto;
+    max-width: 550px; /* Batasi lebar container item nav agar tidak terlalu melebar */
+    margin: 0 auto; /* Ratakan tengah container item nav */
     padding: 0 25px;
-    width: 100%; /* Agar memenuhi lebar max-width */
-    flex-direction: row; /* Selalu horizontal */
+    width: 100%; /* Penuhi lebar max-width */
+    flex-direction: row; /* Item tetap horizontal */
     opacity: 1; /* Selalu terlihat */
     pointer-events: all; /* Selalu dapat diinteraksi */
     transform: translateY(0); /* Tanpa translasi */
-    position: relative; /* Kembali ke relative flow */
+    position: relative; /* Kembali ke relative flow normal */
     bottom: auto;
     right: auto;
     background: transparent; /* Transparan */
     box-shadow: none; /* Hapus shadow */
     min-width: auto;
-    height: auto; /* Pastikan tinggi otomatis */
+    height: auto; /* Tinggi otomatis */
 }
 
 .nav-item {
     display: flex;
-    flex-direction: column; /* Selalu vertikal (ikon di atas teks) */
+    flex-direction: column; /* Ikon di atas teks */
     align-items: center;
     color: #e8dcc0;
     text-decoration: none;
@@ -468,11 +465,11 @@ body::before {
     cursor: pointer;
     position: relative;
     padding: 5px;
-    margin: 0; /* Hapus margin yang mungkin ada dari desktop floating nav */
-    width: auto; /* Lebar otomatis */
+    margin: 0; /* Hapus margin tambahan */
+    width: auto; /* Lebar item otomatis */
     border-radius: 0; /* Hapus border radius */
     background: transparent; /* Transparan */
-    text-align: center; /* Rata tengah teks */
+    text-align: center; /* Teks rata tengah */
 }
 
 .nav-item:hover {
@@ -491,7 +488,7 @@ body::before {
 .nav-icon {
     font-size: 28px;
     margin-bottom: 6px;
-    margin-right: 0; /* Hapus margin-right jika ada */
+    margin-right: 0;
 }
 
 /* Sections */
@@ -743,43 +740,45 @@ body::before {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsif: Style untuk layar yang lebih lebar dari 768px (desktop) */
+/* Responsif: Untuk layar yang lebih lebar dari 768px (desktop) */
 @media (min-width: 769px) {
-    /* Bagian navigasi bawah - Hapus semua overriding untuk desktop floating menu */
-    /* Karena kita ingin navigasi bawah tetap sama seperti mobile di semua ukuran layar */
-    
-    /* Mengatur ulang nav-container agar tetap berperilaku seperti di mobile */
-    .nav-container {
-        max-width: 550px; /* Batasi lebar agar tidak terlalu melebar di desktop */
-        margin: 0 auto; /* Tetap rata tengah */
-        padding: 0 25px; /* Padding horizontal */
-        width: 100%;
-        flex-direction: row; /* Item tetap horizontal */
-        justify-content: space-around; /* Rata item di ruang yang tersedia */
-        align-items: center;
-        opacity: 1; /* Selalu terlihat */
-        pointer-events: all; /* Selalu dapat diinteraksi */
-        transform: translateY(0); /* Tanpa translasi */
-        position: relative; /* Kembali ke relative flow normal */
-        bottom: auto; /* Hilangkan overriding bottom */
-        right: auto; /* Hilangkan overriding right */
-        background: transparent; /* Transparan */
-        box-shadow: none; /* Hapus shadow */
-        min-width: auto; /* Hilangkan min-width */
-        height: auto; /* Tinggi otomatis */
+    /* Main Content: hapus margin kanan jika ada, karena nav ada di bawah */
+    .main-content {
+        margin-right: auto; /* Kembalikan ke margin otomatis */
     }
 
-    /* Mengatur ulang nav-item agar tetap berperilaku seperti di mobile */
+    /* Music Control: pindahkan kembali ke posisi aslinya di kanan atas */
+    .music-control {
+        position: fixed;
+        top: 25px;
+        right: 25px; /* Kembali ke posisi semula */
+        /* Gaya lainnya tetap sama */
+    }
+
+    /* Bottom Navigation: Ini adalah bagian utama yang memastikan sama di semua layar */
+    .bottom-nav {
+        position: fixed; /* Tetap fixed di bawah */
+        bottom: 0;
+        left: 0;
+        right: 0;
+        max-width: none; /* Biarkan lebar penuh */
+        margin: 0; /* Hapus margin auto */
+        border-radius: 30px 30px 0 0; /* Tetap rounded di atas */
+        padding: 18px 0; /* Padding seperti mobile */
+        /* Gaya lainnya sama seperti mobile */
+    }
+
+    .nav-container {
+        max-width: 550px; /* Batasi lebar container item nav */
+        margin: 0 auto; /* Ratakan tengah container item nav */
+        flex-direction: row; /* Item tetap horizontal */
+        justify-content: space-around; /* Rata item di ruang yang tersedia */
+        /* Gaya lainnya sama seperti mobile */
+    }
+
     .nav-item {
         flex-direction: column; /* Ikon di atas teks */
-        align-items: center;
-        margin: 0; /* Hapus margin tambahan dari desktop floating menu */
-        padding: 5px; /* Padding default */
-        width: auto; /* Lebar item otomatis */
-        border-radius: 0; /* Hapus border radius */
-        background: transparent; /* Transparan */
-        text-align: center; /* Teks rata tengah */
-        font-size: 13px; /* Ukuran font default */
+        /* Gaya lainnya sama seperti mobile */
     }
 
     .nav-item:hover {
@@ -788,14 +787,7 @@ body::before {
         background: transparent; /* Pastikan tidak ada background hover */
     }
 
-    /* Mengatur ulang nav-icon agar tetap berperilaku seperti di mobile */
-    .nav-icon {
-        font-size: 28px; /* Ukuran ikon default */
-        margin-bottom: 6px; /* Jarak bawah ikon default */
-        margin-right: 0; /* Hapus margin-right jika ada */
-    }
-
-    /* Memastikan tidak ada pseudo-element ikon hamburger di desktop */
+    /* Menghapus pseudo-element ikon hamburger jika ada dari percobaan sebelumnya */
     .bottom-nav::before {
         content: none;
     }
