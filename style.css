@@ -1,16 +1,4 @@
-/* --- Global Styling & Variables --- */
-:root {
-    --primary-color: #A98C7B; /* Coklat keemasan, mirip referensi */
-    --secondary-color: #E0C7B2; /* Krem muda */
-    --tertiary-color: #F8F5EE; /* Background off-white */
-    --text-dark: #333;
-    --text-light: #f4f4f4;
-
-    --font-heading: 'Playfair Display', serif; /* Font elegan untuk judul */
-    --font-subheading: 'Amiri', serif; /* Font script/arabic-like untuk nama anak */
-    --font-body: 'Poppins', sans-serif; /* Font bersih untuk teks umum */
-}
-
+/* General Styles */
 * {
     margin: 0;
     padding: 0;
@@ -18,650 +6,719 @@
 }
 
 body {
-    font-family: var(--font-body);
-    line-height: 1.6;
-    color: var(--text-dark);
-    background-color: var(--tertiary-color);
-    overflow-x: hidden; /* Mencegah scroll horizontal */
-    scroll-behavior: smooth;
+    font-family: 'Noto Serif', serif; /* More mature serif font */
+    background: linear-gradient(135deg, #fdfbf7 0%, #f0ede5 100%); /* Softer, muted background */
+    color: #4f463e; /* Darker, richer text color */
+    overflow-x: hidden;
+    line-height: 1.7;
 }
 
-/* --- Opening Screen --- */
-.opening-screen {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--secondary-color);
-    background-image: url('../img/background-texture.png'); /* Basic texture for opening */
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    z-index: 1000;
-    transition: opacity 1s ease-in-out;
-}
-
-.opening-screen.hidden {
-    opacity: 0;
-    visibility: hidden;
-    pointer-events: none;
-}
-
-.opening-content {
-    background-color: rgba(255, 255, 255, 0.9);
-    padding: 40px;
-    border-radius: 15px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
-    animation: fadeInScale 1.2s ease-out;
-    max-width: 90%;
-    width: 400px;
-}
-
-.opening-text {
-    font-family: var(--font-body);
-    font-size: 1.1em;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.opening-name {
-    font-family: var(--font-heading);
-    font-size: 2.8em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-.to-text {
-    font-family: var(--font-body);
-    font-size: 1.2em;
-    font-weight: 600;
-    margin-top: 25px;
-    color: var(--primary-color);
-}
-
-.opening-content button {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    border: none;
-    padding: 15px 30px;
-    border-radius: 50px;
-    font-size: 1.1em;
-    cursor: pointer;
-    margin-top: 35px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.opening-content button:hover {
-    background-color: #8D736A;
-    transform: translateY(-2px);
-}
-
-/* --- Main Content & Fade-in Animation --- */
-.main-content {
-    display: none; /* Hidden by default */
-    opacity: 0;
-    /* transition: opacity 1s ease-in-out; <-- Removed, using JS for class 'fade-in' */
-}
-
-.main-content.visible {
-    display: block;
-}
-
-.main-content.fade-in {
-    animation: fadeIn 1s ease-out forwards; /* Apply fade-in animation */
-}
-
-section {
-    padding: 60px 20px;
-    text-align: center;
+.container {
+    max-width: 100%;
+    margin: 0 auto;
     position: relative;
-    overflow: hidden;
-    background-color: var(--tertiary-color);
-}
-
-h2, h3, h4 {
-    font-family: var(--font-heading);
-    color: var(--primary-color);
-    margin-bottom: 20px;
-    line-height: 1.2;
-}
-
-h2 {
-    font-size: 2.8em;
-}
-
-h3 {
-    font-size: 2.2em;
-}
-
-p {
-    font-size: 1.05em;
-    margin-bottom: 15px;
-    color: #555;
-}
-
-/* --- Hero/Cover Section (Inspired by Reference) --- */
-.hero-section {
-    padding: 20px 20px 80px 20px;
-    background-image: url('../img/background-texture.png'); /* Now just the texture */
-    background-size: cover;
-    background-position: top center;
-    color: var(--text-dark);
     min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* --- Ornaments Styling and Animation --- */
-.ornament {
-    position: absolute;
-    width: auto; /* Width will be set for specific ornaments */
-    height: auto;
-    z-index: 1; /* Make sure they are above background but below content */
-    opacity: 0; /* Hidden initially, will fade in with animation */
-}
-
-.ornament-lantern-left {
-    width: 100px; /* Adjust size */
-    top: 20px;
-    left: 20px;
-    transform: translateY(-50px); /* Start slightly above */
-    animation: fadeInSlideDown 1.5s ease-out forwards 0.5s; /* Delay for animation */
-}
-.ornament-lantern-right {
-    width: 100px; /* Adjust size */
-    top: 20px;
-    right: 20px;
-    transform: translateY(-50px);
-    animation: fadeInSlideDown 1.5s ease-out forwards 0.7s;
-}
-
-.ornament-star-bottom-left {
-    width: 120px; /* Adjust size */
-    bottom: 20px;
-    left: 20px;
-    opacity: 0.2; /* More subtle */
-    transform: translateY(50px); /* Start slightly below */
-    animation: fadeInSlideUp 1.5s ease-out forwards 0.9s;
-}
-.ornament-star-bottom-right {
-    width: 120px; /* Adjust size */
-    bottom: 20px;
-    right: 20px;
-    opacity: 0.2; /* More subtle */
-    transform: translateY(50px);
-    animation: fadeInSlideUp 1.5s ease-out forwards 1.1s;
-}
-
-/* Specific for Photo Container (if photo-frame-overlay.png is used) */
-.profile-photo-container {
-    width: 250px;
-    height: 250px;
-    border-radius: 50%; /* Membuat lingkaran */
-    overflow: hidden;
-    margin-bottom: 30px;
-    position: relative;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
-    background-color: var(--secondary-color); /* Fallback/base for frame */
-    display: flex; /* To center the image */
-    justify-content: center;
-    align-items: center;
-}
-
-.profile-photo {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    /* If you have a separate frame overlay, you might want to scale this down slightly
-       transform: scale(0.85); */
-}
-
-/* If you have a separate photo-frame-overlay.png */
-.photo-frame-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain; /* Make sure the frame fits without cropping */
-    z-index: 2; /* Ensure it's above the photo */
-    pointer-events: none; /* Allow clicks to pass through to the photo/container */
-}
-
-
-.hero-content {
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 20px 0;
-    z-index: 2; /* Make sure content is above ornaments */
-}
-
-.section-title-small {
-    font-family: var(--font-body);
-    font-size: 1.2em;
-    color: #666;
-    margin-bottom: 5px;
-}
-
-.section-title-large {
-    font-family: var(--font-heading);
-    font-size: 3.5em;
-    color: var(--primary-color);
-    margin-bottom: 30px;
-}
-
-.invitation-text {
-    font-size: 1.1em;
-    margin: 20px 0;
-    max-width: 500px;
-}
-
-.child-name {
-    font-family: var(--font-subheading);
-    font-size: 3.5em;
-    color: var(--primary-color);
-    margin-bottom: 10px;
-}
-
-.parent-names {
-    font-size: 1em;
-    color: #777;
-}
-
-/* --- Event Details Section --- */
-.event-details-section {
-    background-color: var(--secondary-color);
-    padding-top: 80px;
-}
-
-.countdown-container {
-    margin-bottom: 50px;
-}
-
-.countdown-title {
-    font-size: 1.8em;
-    margin-bottom: 25px;
-    color: var(--primary-color);
-}
-
-.countdown {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.countdown div {
-    background-color: rgba(255, 255, 255, 0.7);
-    padding: 20px 25px;
-    border-radius: 10px;
-    font-size: 2em;
-    font-weight: bold;
-    color: var(--primary-color);
-    min-width: 100px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-}
-
-.countdown span {
-    display: block;
-    font-size: 0.6em;
-    text-transform: uppercase;
-    margin-top: 5px;
-    color: #666;
-}
-
-.event-cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 40px;
-}
-
-.event-card {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-    max-width: 320px;
-    width: 100%;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border-top: 5px solid var(--primary-color);
-}
-
-.event-card .icon-large {
-    font-size: 2.5em;
-    color: var(--primary-color);
-    margin-bottom: 20px;
-}
-
-.event-card h4 {
-    font-size: 1.5em;
-    margin-bottom: 15px;
-}
-
-.event-card p {
-    font-size: 1.1em;
-    margin-bottom: 10px;
-    color: #444;
-}
-
-.btn-maps {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    background-color: var(--primary-color);
-    color: white;
-    padding: 12px 25px;
-    border-radius: 50px;
-    text-decoration: none;
-    margin-top: 20px;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-    font-size: 1em;
-}
-
-.btn-maps:hover {
-    background-color: #8D736A;
-    transform: translateY(-2px);
-}
-
-/* --- Guestbook Section --- */
-.guestbook-section {
-    background-color: var(--secondary-color);
     padding-bottom: 80px;
 }
 
-.guestbook-section form {
-    max-width: 600px;
-    margin: 30px auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-}
-
-.guestbook-section input[type="text"],
-.guestbook-section textarea {
-    width: 100%;
-    padding: 15px;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    font-family: var(--font-body);
-    font-size: 1em;
-    transition: border-color 0.3s ease;
-}
-
-.guestbook-section input[type="text"]:focus,
-.guestbook-section textarea:focus {
-    border-color: var(--primary-color);
-    outline: none;
-}
-
-.guestbook-section textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-.guestbook-section button[type="submit"] {
-    background-color: var(--primary-color);
-    color: white;
-    padding: 15px 30px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    font-size: 1.1em;
-    transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.guestbook-section button[type="submit"]:hover {
-    background-color: #8D736A;
-    transform: translateY(-2px);
-}
-
-.messages-display {
-    margin-top: 50px;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 15px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-.messages-display h4 {
-    font-size: 1.6em;
-    margin-bottom: 25px;
-    text-align: center;
-    color: var(--primary-color);
-}
-
-.message-item {
-    background-color: var(--tertiary-color);
-    padding: 15px 20px;
-    border-radius: 10px;
-    margin-bottom: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.message-item strong {
-    color: var(--primary-color);
-    display: block;
-    margin-bottom: 5px;
-    font-size: 1.1em;
-}
-
-.message-item p {
-    margin-bottom: 0;
-    color: #444;
-}
-
-.no-messages-placeholder {
-    text-align: center;
-    color: #777;
-    font-style: italic;
-    padding: 20px 0;
-}
-
-/* --- Closing Section --- */
-.closing-section {
-    background-color: var(--primary-color);
-    color: var(--text-light);
-    padding: 50px 20px;
-}
-
-.closing-section p {
-    color: var(--text-light);
-    margin-bottom: 20px;
-    font-size: 1.1em;
-    max-width: 700px;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.closing-section h3 {
-    font-size: 2.5em;
-    color: var(--secondary-color);
-    margin-bottom: 30px;
-}
-
-.closing-section .signature {
-    font-style: italic;
-    margin-bottom: 5px;
-    font-size: 1em;
-}
-
-.closing-section .family-name {
-    font-family: var(--font-heading);
-    font-size: 1.8em;
-    font-weight: bold;
-    color: var(--secondary-color);
-    margin-bottom: 0;
-}
-
-/* --- Fixed Bottom Navigation --- */
-.fixed-nav {
+/* Decorative Background Patterns - More Subtle Islamic Geometry */
+body::before {
+    content: '';
     position: fixed;
-    bottom: 0;
+    top: 0;
     left: 0;
     width: 100%;
-    background-color: rgba(255, 255, 255, 0.95);
-    border-top: 1px solid #eee;
-    display: flex;
-    justify-content: space-around;
-    padding: 10px 0;
-    box-shadow: 0 -2px 15px rgba(0,0,0,0.1);
-    z-index: 999;
+    height: 100%;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.03"><path fill="%23d4b895" d="M25 0 L50 25 L25 50 L0 25 Z M75 0 L100 25 L75 50 L50 25 Z M25 50 L50 75 L25 100 L0 75 Z M75 50 L100 75 L75 100 L50 75 Z"/></svg>') repeat;
+    background-size: 100px;
+    z-index: -1;
 }
 
-.fixed-nav a {
+/* Cover Page Specific Styles */
+#cover-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #fdfbf7 0%, #f0ede5 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    z-index: 1001; /* Ensure it's on top */
+    animation: fadeIn 1s ease-out;
+}
+
+.cover-content {
+    background: rgba(255, 255, 255, 0.98);
+    padding: 40px 20px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(100, 80, 60, 0.1); /* Softer shadow */
+    backdrop-filter: blur(5px);
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(220, 210, 190, 0.5); /* Subtle border */
+}
+
+/* Decorative elements on cover - More abstract/subtle */
+.cover-content::before, .cover-content::after {
+    content: '';
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    opacity: 0.1; /* Even more subtle */
+    background-size: contain;
+    background-repeat: no-repeat;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.cover-content::before {
+    top: -50px;
+    left: -50px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23c9a876" d="M50 0 C75 0 100 25 100 50 C100 75 75 100 50 100 C25 100 0 75 0 50 C0 25 25 0 50 0 Z M50 20 C66.5 20 80 33.5 80 50 C80 66.5 66.5 80 50 80 C33.5 80 20 66.5 20 50 C20 33.5 33.5 20 50 20 Z"/></svg>');
+    transform: rotate(15deg);
+}
+
+.cover-content::after {
+    bottom: -50px;
+    right: -50px;
+    background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23c9a876" d="M50 0 C75 0 100 25 100 50 C100 75 75 100 50 100 C25 100 0 75 0 50 C0 25 25 0 50 0 Z M50 20 C66.5 20 80 33.5 80 50 C80 66.5 66.5 80 50 80 C33.5 80 20 66.5 20 50 C20 33.5 33.5 20 50 20 Z"/></svg>');
+    transform: rotate(-45deg);
+}
+
+.cover-image-frame {
+    width: 180px;
+    height: 220px; /* Taller for the arched top */
+    margin: 0 auto 30px;
+    background: linear-gradient(45deg, #e7dec2, #f5f2e8); /* Softer gradient */
+    border: 8px solid #c9a876; /* Muted gold */
+    border-radius: 50% / 40% 40% 10% 10%; /* Creates the arched top */
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(100, 80, 60, 0.2); /* Softer shadow */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cover-image-frame img {
+    width: calc(100% - 16px); /* Adjust for border */
+    height: calc(100% - 16px); /* Adjust for border */
+    object-fit: cover;
+    border-radius: 50% / 40% 40% 10% 10%; /* Match frame shape */
+    transform: translateY(8px); /* Adjust to fit well within arch */
+}
+
+.cover-subtitle {
+    font-size: 18px;
+    color: #6d645e; /* Muted brown */
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+.cover-name {
+    font-family: 'Great Vibes', cursive; /* Script font for main name */
+    font-size: 58px; /* Slightly larger */
+    color: #8b7355; /* Richer brown */
+    margin-bottom: 25px;
+    line-height: 1;
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.08); /* Softer shadow */
+}
+
+.cover-greeting {
+    font-size: 17px; /* Slightly larger */
+    color: #5f5750; /* Muted darker brown */
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+.recipient-name {
+    font-family: 'Scheherazade New', serif;
+    font-size: 26px; /* Slightly larger */
+    color: #7a5e43; /* Richer brown */
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.smaller-open-button {
+    background: #c9a876; /* Muted gold */
+    color: white;
+    border: none;
+    padding: 12px 25px; /* Lebih kecil */
+    border-radius: 25px; /* Sedikit lebih kecil radius */
+    font-size: 16px; /* Lebih kecil */
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1); /* Sesuaikan shadow */
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px; /* Lebih kecil */
+    margin-top: 25px; /* Sesuaikan margin */
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.04em; /* Sesuaikan spacing */
+}
+
+.smaller-open-button:hover {
+    background: #8b7355;
+    transform: translateY(-2px); /* Sesuaikan efek hover */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Sesuaikan shadow hover */
+}
+
+/* Main Content styles */
+.main-content {
+    display: none; /* Hidden by default */
+    animation: fadeIn 1s ease-out;
+}
+
+/* Header Section */
+.header {
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), 
+                url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600"><defs><pattern id="islamicFloral" patternUnits="userSpaceOnUse" width="100" height="100"><path d="M50 0 L61.8 38.2 L100 38.2 L69.1 61.8 L80.9 100 L50 76.4 L19.1 100 L30.9 61.8 L0 38.2 L38.2 38.2 Z" fill="%23c9a876" opacity="0.15"/><circle cx="50" cy="50" r="10" fill="%23d4b895" opacity="0.1"/></pattern></defs><rect width="800" height="600" fill="url(%23islamicFloral)"/></svg>') center/cover;
+    padding: 50px 20px;
+    text-align: center;
+    position: relative;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.15);
+}
+
+.bismillah {
+    font-family: 'Lateef', cursive; /* Islamic calligraphy style font */
+    font-size: 32px; /* Larger Bismillah */
+    color: #8b7355;
+    margin-bottom: 25px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
+}
+
+.invitation-text {
+    font-size: 17px;
+    color: #5d4e37;
+    margin-bottom: 35px;
+    line-height: 1.8;
+    max-width: 380px;
+    margin-left: auto;
+    margin-right: auto;
+    background: rgba(255, 255, 255, 0.7);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+
+.child-photo-main { /* This is the photo for the main home section */
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    border: 8px solid #d4b895;
+    margin: 25px auto;
+    background: linear-gradient(45deg, #e8dcc0, #f5f2e8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.3);
+    animation: pulse 2s infinite alternate;
+}
+
+.child-photo-main img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.child-name {
+    font-family: 'Scheherazade New', serif; /* Distinguished font for name */
+    font-size: 44px;
+    color: #7a5e43; /* Deeper brown */
+    margin: 25px 0;
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+}
+
+.parents-info {
+    font-size: 17px;
+    color: #6b5b47;
+    margin-bottom: 8px;
+}
+
+/* Combined Countdown & Event Details */
+.combined-event-section {
+    background: rgba(255, 255, 255, 0.95);
+    margin: 25px;
+    padding: 30px; /* Padding keseluruhan */
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
+    backdrop-filter: blur(12px);
+    text-align: center;
+    border: 1px solid rgba(212, 184, 149, 0.3);
+    margin-top: 40px;
+}
+
+.section-intro-text {
+    font-size: 17px;
+    color: #5d4e37;
+    margin-bottom: 25px;
+    line-height: 1.6;
+}
+
+.section-title {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px; /* Ukuran judul seperti 'Walimatul Khitan' */
+    color: #8b7355;
+    margin-bottom: 25px;
+    line-height: 1;
+}
+
+.countdown-timer-combined {
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Jarak antar kotak hitungan mundur */
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.countdown-item-small {
+    background: #b89574;
+    color: white;
+    padding: 8px 10px; /* Padding lebih kecil */
+    border-radius: 10px; /* Radius lebih kecil */
+    font-size: 18px; /* Ukuran font angka lebih kecil */
+    font-weight: bold;
+    min-width: 55px; /* Lebar minimum kotak lebih kecil */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Bayangan lebih halus */
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-decoration: none;
-    color: var(--primary-color);
-    font-size: 0.8em;
-    transition: color 0.3s ease, transform 0.2s ease;
-    padding: 5px;
+    justify-content: center;
 }
 
-.fixed-nav a i {
-    font-size: 1.6em;
+.countdown-item-small span {
+    font-size: 11px; /* Ukuran font label (Hari, Jam) lebih kecil */
+    margin-top: 2px;
+    font-weight: normal;
+}
+
+.event-date-display {
+    font-size: 20px; /* Ukuran font tanggal utama */
+    color: #7a5e43;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.event-time-location {
+    font-size: 16px;
+    color: #5d4e37;
+    line-height: 1.8;
+}
+
+.event-time-location p {
     margin-bottom: 5px;
 }
 
-.fixed-nav a:hover {
-    color: #8D736A;
-    transform: translateY(-2px);
+.event-time-location .label-bold {
+    font-weight: bold;
+    color: #7a5e43;
 }
 
-/* --- Animations --- */
-@keyframes fadeInScale {
-    from { opacity: 0; transform: scale(0.9); }
-    to { opacity: 1; transform: scale(1); }
+.event-time-location .location-name {
+    font-weight: bold;
+    margin-top: 8px; /* Lebih banyak jarak ke lokasi */
+    display: block;
+}
+.event-time-location .address-text {
+    font-style: italic;
+    display: block;
+}
+
+.save-to-calendar-button {
+    background: #e66b6b; /* Warna merah muda/coral */
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 30px;
+    text-decoration: none;
+}
+
+.save-to-calendar-button:hover {
+    background: #d45a5a;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+}
+
+
+/* Map Section */
+.map-section {
+    margin: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 25px;
+    overflow: hidden;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
+    border: 1px solid rgba(212, 184, 149, 0.3);
+}
+
+.map-header {
+    padding: 25px;
+    text-align: center;
+    background: #b89574;
+    color: white;
+    font-family: 'Scheherazade New', serif;
+    font-size: 26px;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+}
+
+.map-header p {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+#map {
+    width: 100%;
+    height: 350px; /* Slightly taller map */
+    border: none;
+    filter: grayscale(30%) sepia(20%); /* Subtle map styling */
+}
+
+/* Music Control */
+.music-control {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    z-index: 1000;
+    background: rgba(184, 149, 116, 0.9); /* Goldish brown */
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 65px;
+    height: 65px;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 5px 20px rgba(139, 115, 85, 0.4);
+    transition: all 0.4s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+    display: none; /* Hidden by default, shown after opening */
+}
+
+.music-control:hover {
+    transform: scale(1.15) rotate(10deg);
+    background: rgba(139, 115, 85, 0.95);
+}
+
+/* Bottom Navigation */
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(118, 93, 72, 0.98); /* Darker, richer brown */
+    backdrop-filter: blur(12px);
+    padding: 18px 0;
+    border-radius: 30px 30px 0 0;
+    box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
+    display: none; /* Hidden by default, shown after opening */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    max-width: 550px; /* Slightly wider nav */
+    margin: 0 auto;
+    padding: 0 25px;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #e8dcc0; /* Lighter gold for inactive */
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    padding: 5px;
+}
+
+.nav-item:hover {
+    color: #fefdfb; /* Whiter on hover */
+    transform: translateY(-3px);
+    text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.nav-item.active { /* Style for active nav item */
+    color: #fefdfb;
+    text-shadow: 0 0 8px rgba(255,255,255,0.8);
+    transform: translateY(-3px);
+}
+
+.nav-icon {
+    font-size: 28px; /* Larger icons */
+    margin-bottom: 6px;
+}
+
+/* Sections */
+.section {
+    display: none;
+    animation: fadeIn 0.7s ease-out forwards;
+}
+
+.section.active {
+    display: block;
 }
 
 @keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-}
-
-@keyframes fadeInSlideDown {
-    from { opacity: 0; transform: translateY(-50px); }
+    from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes fadeInSlideUp {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
+/* RSVP Section */
+.rsvp-section {
+    margin: 25px;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 35px;
+    border-radius: 25px;
+    box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
+    border: 1px solid rgba(212, 184, 149, 0.3);
+    text-align: center; /* Rata tengah semua isi */
 }
 
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .ornament-lantern-left, .ornament-lantern-right {
-        width: 80px;
-    }
-    .ornament-star-bottom-left, .ornament-star-bottom-right {
-        width: 100px;
-    }
-    .opening-content {
-        padding: 30px;
-    }
-    .opening-name {
-        font-size: 2.2em;
-    }
-    .section-title-large {
-        font-size: 2.8em;
-    }
-    .child-name {
-        font-size: 2.8em;
-    }
-    .profile-photo-container {
-        width: 200px;
-        height: 200px;
-    }
-    .countdown div {
-        font-size: 1.5em;
-        padding: 15px 20px;
-        min-width: 80px;
-    }
-    .event-card {
-        padding: 25px;
-    }
-    section {
-        padding: 40px 15px;
-    }
+.rsvp-header-icon {
+    font-size: 40px; /* Ukuran ikon di judul */
+    color: #e66b6b; /* Warna ikon hati */
+    vertical-align: middle; /* Rata tengah dengan teks */
+    margin-right: 10px;
 }
 
-@media (max-width: 480px) {
-    .ornament-lantern-left, .ornament-lantern-right {
-        width: 60px;
-    }
-    .ornament-star-bottom-left, .ornament-star-bottom-right {
-        width: 80px;
-    }
-    .opening-content {
-        padding: 20px;
-    }
-    .opening-name {
-        font-size: 1.8em;
-    }
-    .to-text {
-        font-size: 1em;
-    }
-    .opening-content button {
-        padding: 12px 25px;
-        font-size: 1em;
-    }
+.rsvp-section h2 {
+    font-family: 'Scheherazade New', serif;
+    color: #7a5e43;
+    margin-bottom: 20px;
+    font-size: 32px; /* Ukuran judul */
+}
 
-    .section-title-large {
-        font-size: 2.2em;
-    }
-    .child-name {
-        font-size: 2.5em;
-    }
-    .profile-photo-container {
-        width: 180px;
-        height: 180px;
-    }
+.rsvp-section p {
+    color: #6b5b47;
+    margin-bottom: 30px;
+    font-size: 16px;
+}
 
-    .countdown {
-        gap: 10px;
-    }
-    .countdown div {
-        font-size: 1.2em;
-        padding: 10px 12px;
-        min-width: 70px;
-    }
-    .event-cards-container {
-        flex-direction: column;
-        align-items: center;
-    }
-    .fixed-nav a {
-        font-size: 0.7em;
-        padding: 3px;
-    }
-    .fixed-nav a i {
-        font-size: 1.3em;
-    }
+.rsvp-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* Jarak antar form group */
+    margin-top: 20px;
+    max-width: 400px; /* Lebar maksimum form */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    text-align: left; /* Label dan input rata kiri */
+}
+
+.form-group label {
+    margin-bottom: 8px; /* Jarak antara label dan input */
+    color: #5d4e37;
+    font-weight: bold;
+    font-size: 15px;
+    display: block; /* Agar label di atas input */
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%; /* Lebar penuh */
+    padding: 15px; /* Padding lebih besar */
+    border: 1px solid #e8dcc0; /* Border lebih halus */
+    border-radius: 10px; /* Radius lebih halus */
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.9); /* Background input */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    color: #4f463e;
+    resize: vertical; /* Izinkan resize vertikal untuk textarea */
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: #a0927a; /* Warna placeholder */
+    font-style: italic;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #c9a876; /* Warna border saat fokus */
+    box-shadow: 0 0 0 3px rgba(201, 168, 118, 0.2); /* Shadow saat fokus */
+}
+
+.submit-btn {
+    background: #c9a876; /* Warna tombol utama */
+    color: white;
+    border: none;
+    padding: 16px 30px; /* Padding lebih besar */
+    border-radius: 30px; /* Lebih rounded */
+    font-size: 18px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center; /* Rata tengah ikon dan teks */
+    gap: 10px;
+    margin-top: 20px; /* Jarak dari form */
+    text-decoration: none;
+}
+
+.submit-btn:hover {
+    background: #8b7355; /* Warna hover */
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+/* Ucapan Result Message */
+#ucapanResult {
+    margin-top: 30px; /* Jarak dari form */
+    padding: 20px;
+    border-radius: 15px;
+    background: #e6f7e6; /* Warna hijau muda */
+    color: #388e3c; /* Warna teks hijau gelap */
+    border: 1px solid #a8e0a8; /* Border hijau */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    text-align: center;
+    font-size: 16px;
+}
+
+#ucapanResult h4 {
+    font-size: 18px;
+    color: #2d5a2d;
+    margin-bottom: 10px;
+}
+
+
+/* Ucapan Card Styles */
+.ucapan-card {
+    background: rgba(255, 255, 255, 0.9); /* Slightly less transparent */
+    border: 1px solid #e8dcc0; /* Softer border */
+    border-radius: 18px;
+    padding: 22px;
+    margin-bottom: 18px;
+    box-shadow: 0 6px 18px rgba(100, 80, 60, 0.08); /* Softer shadow */
+    transition: all 0.3s ease;
+    animation: slideIn 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+    text-align: left; /* Pastikan teks ucapan rata kiri */
+}
+
+.ucapan-card::before {
+    content: '❝'; /* Quote mark */
+    position: absolute;
+    top: 10px;
+    left: 15px;
+    font-size: 50px;
+    color: rgba(201, 168, 118, 0.15); /* Muted gold */
+    font-family: serif;
+    line-height: 1;
+}
+
+.ucapan-card::after {
+    content: '❞'; /* Quote mark */
+    position: absolute;
+    bottom: 5px;
+    right: 15px;
+    font-size: 50px;
+    color: rgba(201, 168, 118, 0.15); /* Muted gold */
+    font-family: serif;
+    line-height: 1;
+}
+
+.ucapan-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(100, 80, 60, 0.15);
+    border-color: #c9a876; /* Adjusted gold */
+}
+
+.ucapan-sender {
+    font-family: 'Scheherazade New', serif;
+    font-weight: bold;
+    color: #7a5e43;
+    margin-bottom: 10px;
+    font-size: 18px;
+    padding-left: 30px; /* Space for quote */
+}
+
+.ucapan-message {
+    color: #5f5750; /* Adjusted to new body text color */
+    line-height: 1.7;
+    margin-bottom: 12px;
+    font-style: italic;
+    padding: 0 15px;
+    text-align: justify;
+}
+
+.ucapan-time {
+    color: #a0927a;
+    font-size: 13px;
+    text-align: right;
+    padding-right: 10px;
+}
+
+.no-ucapan {
+    text-align: center;
+    color: #a0927a;
+    font-style: italic;
+    padding: 40px 20px;
+    background: rgba(255, 255, 255, 0.7); /* Slightly less transparent */
+    border-radius: 20px;
+    border: 2px dashed #e8dcc0;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+        
+.no-ucapan .icon {
+    font-size: 60px;
+    margin-bottom: 20px;
+    color: #c9a876; /* Adjusted gold */
+    animation: bounce 1.5s infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-25px) rotate(8deg); }
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.03); }
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-15px); }
+    60% { transform: translateY(-7px); }
+}
+@keyframes slideInFromLeft {
+    0% { transform: translateX(-100%); opacity: 0; }
+    100% { transform: translateX(0); opacity: 1; }
+}
+@keyframes slideInFromTop {
+    0% { transform: translateY(-50px); opacity: 0; }
+    100% { transform: translateY(0); opacity: 1; }
 }
