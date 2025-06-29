@@ -6,9 +6,9 @@
 }
 
 body {
-    font-family: 'Noto Serif', serif; /* More mature serif font */
-    background: linear-gradient(135deg, #fdfbf7 0%, #f0ede5 100%); /* Softer, muted background */
-    color: #4f463e; /* Darker, richer text color */
+    font-family: 'Noto Serif', serif;
+    background: linear-gradient(135deg, #fdfbf7 0%, #f0ede5 100%);
+    color: #4f463e;
     overflow-x: hidden;
     line-height: 1.7;
 }
@@ -55,13 +55,13 @@ body::before {
     background: rgba(255, 255, 255, 0.98);
     padding: 40px 20px;
     border-radius: 25px;
-    box-shadow: 0 10px 40px rgba(100, 80, 60, 0.1); /* Softer shadow */
+    box-shadow: 0 10px 40px rgba(100, 80, 60, 0.1);
     backdrop-filter: blur(5px);
     width: 90%;
     max-width: 420px;
     position: relative;
     overflow: hidden;
-    border: 1px solid rgba(220, 210, 190, 0.5); /* Subtle border */
+    border: 1px solid rgba(220, 210, 190, 0.5);
 }
 
 /* Decorative elements on cover - More abstract/subtle */
@@ -70,7 +70,7 @@ body::before {
     position: absolute;
     width: 150px;
     height: 150px;
-    opacity: 0.1; /* Even more subtle */
+    opacity: 0.1;
     background-size: contain;
     background-repeat: no-repeat;
     pointer-events: none;
@@ -93,87 +93,87 @@ body::before {
 
 .cover-image-frame {
     width: 180px;
-    height: 190px; /* Diubah: sedikit lebih tinggi dari lebar untuk tetap ada ruang lengkungan, tapi tidak terlalu jomplang */
+    height: 190px;
     margin: 0 auto 30px;
-    background: linear-gradient(45deg, #e7dec2, #f5f2e8); /* Softer gradient */
-    border: 8px solid #c9a876; /* Muted gold */
-    border-radius: 40% / 30% 30% 10% 10%; /* Diubah: Kurangi kelengkungan atas agar tidak terlalu memotong, dan buat lebih simetris */
+    background: linear-gradient(45deg, #e7dec2, #f5f2e8);
+    border: 8px solid #c9a876;
+    border-radius: 40% / 30% 30% 10% 10%;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(100, 80, 60, 0.2); /* Softer shadow */
+    box-shadow: 0 10px 30px rgba(100, 80, 60, 0.2);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .cover-image-frame img {
-    width: calc(100% - 16px); /* Mengisi lebar wadah, dikurangi border */
-    height: calc(100% - 16px); /* Mengisi tinggi wadah, dikurangi border */
-    object-fit: cover; /* Tetap cover untuk mengisi penuh */
-    object-position: center top; /* Fokuskan bagian atas gambar */
-    border-radius: 40% / 30% 30% 10% 10%; /* Dicocokkan dengan border-radius wadah */
-    transform: translateY(0px); /* Diubah: Hapus translasi Y, biarkan object-position yang mengatur */
+    width: calc(100% - 16px);
+    height: calc(100% - 16px);
+    object-fit: cover;
+    object-position: center top;
+    border-radius: 40% / 30% 30% 10% 10%;
+    transform: translateY(0px);
 }
 
 .cover-subtitle {
     font-size: 18px;
-    color: #6d645e; /* Muted brown */
+    color: #6d645e;
     margin-bottom: 10px;
     font-style: italic;
 }
 
 .cover-name {
-    font-family: 'Great Vibes', cursive; /* Script font for main name */
-    font-size: 58px; /* Slightly larger */
-    color: #8b7355; /* Richer brown */
+    font-family: 'Great Vibes', cursive;
+    font-size: 58px;
+    color: #8b7355;
     margin-bottom: 25px;
     line-height: 1;
-    text-shadow: 2px 2px 5px rgba(0,0,0,0.08); /* Softer shadow */
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.08);
 }
 
 .cover-greeting {
-    font-size: 17px; /* Slightly larger */
-    color: #5f5750; /* Muted darker brown */
+    font-size: 17px;
+    color: #5f5750;
     margin-bottom: 20px;
     line-height: 1.6;
 }
 
 .recipient-name {
     font-family: 'Scheherazade New', serif;
-    font-size: 26px; /* Slightly larger */
-    color: #7a5e43; /* Richer brown */
+    font-size: 26px;
+    color: #7a5e43;
     font-weight: bold;
     margin-bottom: 5px;
 }
 
 .smaller-open-button {
-    background: #c9a876; /* Muted gold */
+    background: #c9a876;
     color: white;
     border: none;
-    padding: 12px 25px; /* Lebih kecil */
-    border-radius: 25px; /* Sedikit lebih kecil radius */
-    font-size: 16px; /* Lebih kecil */
+    padding: 12px 25px;
+    border-radius: 25px;
+    font-size: 16px;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 15px rgba(0,0,0,0.1); /* Sesuaikan shadow */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.1);
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    gap: 8px; /* Lebih kecil */
-    margin-top: 25px; /* Sesuaikan margin */
+    gap: 8px;
+    margin-top: 25px;
     text-decoration: none;
     text-transform: uppercase;
-    letter-spacing: 0.04em; /* Sesuaikan spacing */
+    letter-spacing: 0.04em;
 }
 
 .smaller-open-button:hover {
     background: #8b7355;
-    transform: translateY(-2px); /* Sesuaikan efek hover */
-    box-shadow: 0 5px 20px rgba(0,0,0,0.2); /* Sesuaikan shadow hover */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
 /* Main Content styles */
 .main-content {
-    display: none; /* Hidden by default */
+    display: none;
     animation: fadeIn 1s ease-out;
 }
 
@@ -190,8 +190,8 @@ body::before {
 }
 
 .bismillah {
-    font-family: 'Lateef', cursive; /* Islamic calligraphy style font */
-    font-size: 32px; /* Larger Bismillah */
+    font-family: 'Lateef', cursive;
+    font-size: 32px;
     color: #8b7355;
     margin-bottom: 25px;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.05);
@@ -211,7 +211,7 @@ body::before {
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
 }
 
-.child-photo-main { /* This is the photo for the main home section */
+.child-photo-main {
     width: 180px;
     height: 180px;
     border-radius: 50%;
@@ -234,9 +234,9 @@ body::before {
 }
 
 .child-name {
-    font-family: 'Scheherazade New', serif; /* Distinguished font for name */
+    font-family: 'Scheherazade New', serif;
     font-size: 44px;
-    color: #7a5e43; /* Deeper brown */
+    color: #7a5e43;
     margin: 25px 0;
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
@@ -252,7 +252,7 @@ body::before {
 .combined-event-section {
     background: rgba(255, 255, 255, 0.95);
     margin: 25px;
-    padding: 30px; /* Padding keseluruhan */
+    padding: 30px;
     border-radius: 25px;
     box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
     backdrop-filter: blur(12px);
@@ -270,7 +270,7 @@ body::before {
 
 .section-title {
     font-family: 'Great Vibes', cursive;
-    font-size: 48px; /* Ukuran judul seperti 'Walimatul Khitan' */
+    font-size: 48px;
     color: #8b7355;
     margin-bottom: 25px;
     line-height: 1;
@@ -279,7 +279,7 @@ body::before {
 .countdown-timer-combined {
     display: flex;
     justify-content: center;
-    gap: 10px; /* Jarak antar kotak hitungan mundur */
+    gap: 10px;
     margin-bottom: 25px;
     flex-wrap: wrap;
 }
@@ -287,12 +287,12 @@ body::before {
 .countdown-item-small {
     background: #b89574;
     color: white;
-    padding: 8px 10px; /* Padding lebih kecil */
-    border-radius: 10px; /* Radius lebih kecil */
-    font-size: 18px; /* Ukuran font angka lebih kecil */
+    padding: 8px 10px;
+    border-radius: 10px;
+    font-size: 18px;
     font-weight: bold;
-    min-width: 55px; /* Lebar minimum kotak lebih kecil */
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* Bayangan lebih halus */
+    min-width: 55px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -300,13 +300,13 @@ body::before {
 }
 
 .countdown-item-small span {
-    font-size: 11px; /* Ukuran font label (Hari, Jam) lebih kecil */
+    font-size: 11px;
     margin-top: 2px;
     font-weight: normal;
 }
 
 .event-date-display {
-    font-size: 20px; /* Ukuran font tanggal utama */
+    font-size: 20px;
     color: #7a5e43;
     font-weight: bold;
     margin-bottom: 15px;
@@ -329,7 +329,7 @@ body::before {
 
 .event-time-location .location-name {
     font-weight: bold;
-    margin-top: 8px; /* Lebih banyak jarak ke lokasi */
+    margin-top: 8px;
     display: block;
 }
 .event-time-location .address-text {
@@ -338,7 +338,7 @@ body::before {
 }
 
 .save-to-calendar-button {
-    background: #e66b6b; /* Warna merah muda/coral */
+    background: #e66b6b;
     color: white;
     border: none;
     padding: 12px 25px;
@@ -360,7 +360,6 @@ body::before {
     transform: translateY(-2px);
     box-shadow: 0 6px 20px rgba(0,0,0,0.2);
 }
-
 
 /* Map Section */
 .map-section {
@@ -389,9 +388,9 @@ body::before {
 
 #map {
     width: 100%;
-    height: 350px; /* Slightly taller map */
+    height: 350px;
     border: none;
-    filter: grayscale(30%) sepia(20%); /* Subtle map styling */
+    filter: grayscale(30%) sepia(20%);
 }
 
 /* Music Control */
@@ -400,7 +399,7 @@ body::before {
     top: 25px;
     right: 25px;
     z-index: 1000;
-    background: rgba(184, 149, 116, 0.9); /* Goldish brown */
+    background: rgba(184, 149, 116, 0.9);
     color: white;
     border: none;
     border-radius: 50%;
@@ -414,7 +413,7 @@ body::before {
     align-items: center;
     justify-content: center;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-    display: none; /* Hidden by default, shown after opening */
+    display: none;
 }
 
 .music-control:hover {
@@ -422,59 +421,77 @@ body::before {
     background: rgba(139, 115, 85, 0.95);
 }
 
-/* Bottom Navigation */
+/* Bottom Navigation (Always like mobile) */
 .bottom-nav {
     position: fixed;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(118, 93, 72, 0.98); /* Darker, richer brown */
+    background: rgba(118, 93, 72, 0.98);
     backdrop-filter: blur(12px);
     padding: 18px 0;
     border-radius: 30px 30px 0 0;
     box-shadow: 0 -5px 25px rgba(0, 0, 0, 0.15);
-    display: flex; /* Default to flex for mobile */
-    z-index: 999; /* Ensure it's above other content but below cover */
+    display: flex; /* Always display as flex */
+    z-index: 999;
 }
 
 .nav-container {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    max-width: 550px; /* Slightly wider nav */
+    max-width: 550px; /* Batasi lebar agar tidak terlalu lebar di desktop */
     margin: 0 auto;
     padding: 0 25px;
-    width: 100%; /* Make it fill container width */
+    width: 100%; /* Agar memenuhi lebar max-width */
+    flex-direction: row; /* Selalu horizontal */
+    opacity: 1; /* Selalu terlihat */
+    pointer-events: all; /* Selalu dapat diinteraksi */
+    transform: translateY(0); /* Tanpa translasi */
+    position: relative; /* Kembali ke relative flow */
+    bottom: auto;
+    right: auto;
+    background: transparent; /* Transparan */
+    box-shadow: none; /* Hapus shadow */
+    min-width: auto;
+    height: auto; /* Pastikan tinggi otomatis */
 }
 
 .nav-item {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Selalu vertikal (ikon di atas teks) */
     align-items: center;
-    color: #e8dcc0; /* Lighter gold for inactive */
+    color: #e8dcc0;
     text-decoration: none;
     font-size: 13px;
     transition: all 0.3s ease;
     cursor: pointer;
     position: relative;
     padding: 5px;
+    margin: 0; /* Hapus margin yang mungkin ada dari desktop floating nav */
+    width: auto; /* Lebar otomatis */
+    border-radius: 0; /* Hapus border radius */
+    background: transparent; /* Transparan */
+    text-align: center; /* Rata tengah teks */
 }
 
 .nav-item:hover {
-    color: #fefdfb; /* Whiter on hover */
+    color: #fefdfb;
     transform: translateY(-3px);
     text-shadow: 0 0 5px rgba(255,255,255,0.5);
+    background: transparent; /* Pastikan tidak ada background hover */
 }
 
-.nav-item.active { /* Style for active nav item */
+.nav-item.active {
     color: #fefdfb;
     text-shadow: 0 0 8px rgba(255,255,255,0.8);
     transform: translateY(-3px);
 }
 
 .nav-icon {
-    font-size: 28px; /* Larger icons */
+    font-size: 28px;
     margin-bottom: 6px;
+    margin-right: 0; /* Hapus margin-right jika ada */
 }
 
 /* Sections */
@@ -500,13 +517,13 @@ body::before {
     border-radius: 25px;
     box-shadow: 0 10px 40px rgba(139, 115, 85, 0.2);
     border: 1px solid rgba(212, 184, 149, 0.3);
-    text-align: center; /* Rata tengah semua isi */
+    text-align: center;
 }
 
 .rsvp-header-icon {
-    font-size: 40px; /* Ukuran ikon di judul */
-    color: #e66b6b; /* Warna ikon hati */
-    vertical-align: middle; /* Rata tengah dengan teks */
+    font-size: 40px;
+    color: #e66b6b;
+    vertical-align: middle;
     margin-right: 10px;
 }
 
@@ -514,7 +531,7 @@ body::before {
     font-family: 'Scheherazade New', serif;
     color: #7a5e43;
     margin-bottom: 20px;
-    font-size: 32px; /* Ukuran judul */
+    font-size: 32px;
 }
 
 .rsvp-section p {
@@ -526,57 +543,57 @@ body::before {
 .rsvp-form {
     display: flex;
     flex-direction: column;
-    gap: 20px; /* Jarak antar form group */
+    gap: 20px;
     margin-top: 20px;
-    max-width: 400px; /* Lebar maksimum form */
+    max-width: 400px;
     margin-left: auto;
     margin-right: auto;
 }
 
 .form-group {
-    text-align: left; /* Label dan input rata kiri */
+    text-align: left;
 }
 
 .form-group label {
-    margin-bottom: 8px; /* Jarak antara label dan input */
+    margin-bottom: 8px;
     color: #5d4e37;
     font-weight: bold;
     font-size: 15px;
-    display: block; /* Agar label di atas input */
+    display: block;
 }
 
 .form-group input,
 .form-group textarea {
-    width: 100%; /* Lebar penuh */
-    padding: 15px; /* Padding lebih besar */
-    border: 1px solid #e8dcc0; /* Border lebih halus */
-    border-radius: 10px; /* Radius lebih halus */
+    width: 100%;
+    padding: 15px;
+    border: 1px solid #e8dcc0;
+    border-radius: 10px;
     font-size: 16px;
-    background: rgba(255, 255, 255, 0.9); /* Background input */
+    background: rgba(255, 255, 255, 0.9);
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
     color: #4f463e;
-    resize: vertical; /* Izinkan resize vertikal untuk textarea */
+    resize: vertical;
 }
 
 .form-group input::placeholder,
 .form-group textarea::placeholder {
-    color: #a0927a; /* Warna placeholder */
+    color: #a0927a;
     font-style: italic;
 }
 
 .form-group input:focus,
 .form-group textarea:focus {
     outline: none;
-    border-color: #c9a876; /* Warna border saat fokus */
-    box-shadow: 0 0 0 3px rgba(201, 168, 118, 0.2); /* Shadow saat fokus */
+    border-color: #c9a876;
+    box-shadow: 0 0 0 3px rgba(201, 168, 118, 0.2);
 }
 
 .submit-btn {
-    background: #c9a876; /* Warna tombol utama */
+    background: #c9a876;
     color: white;
     border: none;
-    padding: 16px 30px; /* Padding lebih besar */
-    border-radius: 30px; /* Lebih rounded */
+    padding: 16px 30px;
+    border-radius: 30px;
     font-size: 18px;
     cursor: pointer;
     transition: all 0.3s ease;
@@ -584,26 +601,26 @@ body::before {
     font-weight: bold;
     display: inline-flex;
     align-items: center;
-    justify-content: center; /* Rata tengah ikon dan teks */
+    justify-content: center;
     gap: 10px;
-    margin-top: 20px; /* Jarak dari form */
+    margin-top: 20px;
     text-decoration: none;
 }
 
 .submit-btn:hover {
-    background: #8b7355; /* Warna hover */
+    background: #8b7355;
     transform: translateY(-2px);
     box-shadow: 0 8px 20px rgba(0,0,0,0.2);
 }
 
 /* Ucapan Result Message */
 #ucapanResult {
-    margin-top: 30px; /* Jarak dari form */
+    margin-top: 30px;
     padding: 20px;
     border-radius: 15px;
-    background: #e6f7e6; /* Warna hijau muda */
-    color: #388e3c; /* Warna teks hijau gelap */
-    border: 1px solid #a8e0a8; /* Border hijau */
+    background: #e6f7e6;
+    color: #388e3c;
+    border: 1px solid #a8e0a8;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
     text-align: center;
     font-size: 16px;
@@ -618,37 +635,37 @@ body::before {
 
 /* Ucapan Card Styles */
 .ucapan-card {
-    background: rgba(255, 255, 255, 0.9); /* Slightly less transparent */
-    border: 1px solid #e8dcc0; /* Softer border */
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e8dcc0;
     border-radius: 18px;
     padding: 22px;
     margin-bottom: 18px;
-    box-shadow: 0 6px 18px rgba(100, 80, 60, 0.08); /* Softer shadow */
+    box-shadow: 0 6px 18px rgba(100, 80, 60, 0.08);
     transition: all 0.3s ease;
     animation: slideIn 0.6s ease-out;
     position: relative;
     overflow: hidden;
-    text-align: left; /* Pastikan teks ucapan rata kiri */
+    text-align: left;
 }
 
 .ucapan-card::before {
-    content: '❝'; /* Quote mark */
+    content: '❝';
     position: absolute;
     top: 10px;
     left: 15px;
     font-size: 50px;
-    color: rgba(201, 168, 118, 0.15); /* Muted gold */
+    color: rgba(201, 168, 118, 0.15);
     font-family: serif;
     line-height: 1;
 }
 
 .ucapan-card::after {
-    content: '❞'; /* Quote mark */
+    content: '❞';
     position: absolute;
     bottom: 5px;
     right: 15px;
     font-size: 50px;
-    color: rgba(201, 168, 118, 0.15); /* Muted gold */
+    color: rgba(201, 168, 118, 0.15);
     font-family: serif;
     line-height: 1;
 }
@@ -656,7 +673,7 @@ body::before {
 .ucapan-card:hover {
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(100, 80, 60, 0.15);
-    border-color: #c9a876; /* Adjusted gold */
+    border-color: #c9a876;
 }
 
 .ucapan-sender {
@@ -665,11 +682,11 @@ body::before {
     color: #7a5e43;
     margin-bottom: 10px;
     font-size: 18px;
-    padding-left: 30px; /* Space for quote */
+    padding-left: 30px;
 }
 
 .ucapan-message {
-    color: #5f5750; /* Adjusted to new body text color */
+    color: #5f5750;
     line-height: 1.7;
     margin-bottom: 12px;
     font-style: italic;
@@ -689,7 +706,7 @@ body::before {
     color: #a0927a;
     font-style: italic;
     padding: 40px 20px;
-    background: rgba(255, 255, 255, 0.7); /* Slightly less transparent */
+    background: rgba(255, 255, 255, 0.7);
     border-radius: 20px;
     border: 2px dashed #e8dcc0;
     box-shadow: 0 4px 15px rgba(0,0,0,0.05);
@@ -698,7 +715,7 @@ body::before {
 .no-ucapan .icon {
     font-size: 60px;
     margin-bottom: 20px;
-    color: #c9a876; /* Adjusted gold */
+    color: #c9a876;
     animation: bounce 1.5s infinite;
 }
 
@@ -726,70 +743,60 @@ body::before {
     100% { transform: translateY(0); opacity: 1; }
 }
 
-/* Responsive adjustment for screens wider than mobile - Menghapus desktop floating nav */
+/* Responsif: Style untuk layar yang lebih lebar dari 768px (desktop) */
 @media (min-width: 769px) {
-    /* Mengembalikan bottom-nav ke perilaku mobile di desktop */
-    .bottom-nav {
-        position: fixed; /* Tetap fixed di bawah */
-        bottom: 0;
-        left: 0;
-        right: 0;
-        width: auto; /* Lebar otomatis */
-        height: auto; /* Tinggi otomatis */
-        border-radius: 30px 30px 0 0; /* Kembali ke border radius atas saja */
-        padding: 18px 0; /* Padding seperti semula */
-        display: flex; /* Tetap flex */
-        align-items: center;
-        justify-content: center;
-        overflow: hidden; /* Kembali ke hidden jika ingin kontennya di dalam batas nav */
-    }
-
-    /* Menghapus ikon hamburger yang dulunya ada di desktop */
-    .bottom-nav::before {
-        content: none; /* Hapus ikon hamburger */
-    }
-
-    /* Memastikan nav-container kembali ke default flex row */
+    /* Bagian navigasi bawah - Hapus semua overriding untuk desktop floating menu */
+    /* Karena kita ingin navigasi bawah tetap sama seperti mobile di semua ukuran layar */
+    
+    /* Mengatur ulang nav-container agar tetap berperilaku seperti di mobile */
     .nav-container {
-        flex-direction: row; /* Kembali ke horizontal */
-        justify-content: space-around; /* Rata tengah item */
+        max-width: 550px; /* Batasi lebar agar tidak terlalu melebar di desktop */
+        margin: 0 auto; /* Tetap rata tengah */
+        padding: 0 25px; /* Padding horizontal */
+        width: 100%;
+        flex-direction: row; /* Item tetap horizontal */
+        justify-content: space-around; /* Rata item di ruang yang tersedia */
         align-items: center;
-        padding: 0 25px;
-        max-width: 550px; /* Batasi lebar */
-        height: auto;
-        opacity: 1; /* Selalu tampil */
-        pointer-events: all; /* Selalu bisa diinteraksi */
+        opacity: 1; /* Selalu terlihat */
+        pointer-events: all; /* Selalu dapat diinteraksi */
         transform: translateY(0); /* Tanpa translasi */
-        position: relative; /* Kembali ke relative */
-        bottom: auto;
-        right: auto;
+        position: relative; /* Kembali ke relative flow normal */
+        bottom: auto; /* Hilangkan overriding bottom */
+        right: auto; /* Hilangkan overriding right */
         background: transparent; /* Transparan */
         box-shadow: none; /* Hapus shadow */
-        min-width: auto;
+        min-width: auto; /* Hilangkan min-width */
+        height: auto; /* Tinggi otomatis */
     }
 
-    /* Memastikan item navigasi kembali ke gaya defaultnya */
+    /* Mengatur ulang nav-item agar tetap berperilaku seperti di mobile */
     .nav-item {
-        margin: 0; /* Hapus margin vertikal */
+        flex-direction: column; /* Ikon di atas teks */
+        align-items: center;
+        margin: 0; /* Hapus margin tambahan dari desktop floating menu */
         padding: 5px; /* Padding default */
-        width: auto; /* Lebar otomatis */
+        width: auto; /* Lebar item otomatis */
         border-radius: 0; /* Hapus border radius */
         background: transparent; /* Transparan */
-        text-align: center; /* Rata tengah teks */
-        flex-direction: column; /* Ikon dan teks vertikal */
-        justify-content: center;
-        font-size: 13px;
+        text-align: center; /* Teks rata tengah */
+        font-size: 13px; /* Ukuran font default */
     }
 
     .nav-item:hover {
-        background: transparent; /* Hapus background hover */
         transform: translateY(-3px); /* Efek hover tetap ada */
         text-shadow: 0 0 5px rgba(255,255,255,0.5);
+        background: transparent; /* Pastikan tidak ada background hover */
     }
 
-    .nav-item .nav-icon {
-        font-size: 28px; /* Ukuran ikon kembali seperti mobile */
-        margin-right: 0; /* Hapus margin kanan */
-        margin-bottom: 6px; /* Kembali ke margin bawah */
+    /* Mengatur ulang nav-icon agar tetap berperilaku seperti di mobile */
+    .nav-icon {
+        font-size: 28px; /* Ukuran ikon default */
+        margin-bottom: 6px; /* Jarak bawah ikon default */
+        margin-right: 0; /* Hapus margin-right jika ada */
+    }
+
+    /* Memastikan tidak ada pseudo-element ikon hamburger di desktop */
+    .bottom-nav::before {
+        content: none;
     }
 }
