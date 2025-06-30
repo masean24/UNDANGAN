@@ -161,7 +161,7 @@ async function submitUcapan(event) { // Tambahkan 'async' di sini
             </div>
         `;
         resultDiv.style.display = 'block';
-        setTimeout(() => { resultDiv.style.display = 'none'; }, 5000);
+        setTimeout(() => { resultPadid.style.display = 'none'; }, 5000);
     }
 }
 
@@ -241,12 +241,12 @@ function startCountdown() {
     const x = setInterval(function() {
         const now = new Date().getTime();
         const distance = eventDate - now;
-
+            
         const days = Math.floor(distance / (1000 * 60 * 60 * 24));
         const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
+            
         // Display the result in the corresponding elements
         const daysEl = document.getElementById("days");
         const hoursEl = document.getElementById("hours");
@@ -257,21 +257,21 @@ function startCountdown() {
         if (hoursEl) hoursEl.innerHTML = (hours < 10 ? "0" : "") + hours;
         if (minutesEl) minutesEl.innerHTML = (minutes < 10 ? "0" : "") + minutes;
         if (secondsEl) secondsEl.innerHTML = (seconds < 10 ? "0" : "") + seconds;
-
+            
         // If the count down is finished, write some text
         if (distance < 0) {
             clearInterval(x);
             const countdownElement = document.getElementById("countdown");
-            if (countdownElement) {
+            if (countdownElement) { 
                 countdownElement.innerHTML = "🎉 Acara Sedang Berlangsung! 🎉";
                 countdownElement.style.fontSize = "22px";
                 countdownElement.style.color = "#7a5e43";
                 countdownElement.style.fontWeight = "bold";
-                countdownElement.style.display = "block";
+                countdownElement.style.display = "block"; 
                 countdownElement.style.textAlign = "center"; /* Pastikan teks rata tengah */
             }
         }
-    }, 1000); // <--- Kurung kurawal penutup fungsi setInterval ada di sini, diikuti oleh waktu interval dan kurung tutup setInterval.
+    }, 1000);
 }
 
 // Function to save event to Google Calendar
