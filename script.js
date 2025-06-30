@@ -249,10 +249,14 @@ function startCountdown() {
             
         // Display the result in the corresponding elements
         const daysEl = document.getElementById("days");
-        const hoursEl = document = (days < 10 ? "0" : "") + days;
-            hoursEl.innerHTML = (hours < 10 ? "0" : "") + hours;
-            minutesEl.innerHTML = (minutes < 10 ? "0" : "") + minutes;
-            secondsEl.innerHTML = (seconds < 10 ? "0" : "") + seconds;
+        const hoursEl = document.getElementById("hours");
+        const minutesEl = document.getElementById("minutes");
+        const secondsEl = document.getElementById("seconds");
+
+        if (daysEl) daysEl.innerHTML = (days < 10 ? "0" : "") + days;
+        if (hoursEl) hoursEl.innerHTML = (hours < 10 ? "0" : "") + hours;
+        if (minutesEl) minutesEl.innerHTML = (minutes < 10 ? "0" : "") + minutes;
+        if (secondsEl) secondsEl.innerHTML = (seconds < 10 ? "0" : "") + seconds;
         }
             
         // If the count down is finished, write some text
