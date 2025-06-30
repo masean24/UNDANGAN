@@ -257,6 +257,7 @@ function startCountdown() {
         if (hoursEl) hoursEl.innerHTML = (hours < 10 ? "0" : "") + hours;
         if (minutesEl) minutesEl.innerHTML = (minutes < 10 ? "0" : "") + minutes;
         if (secondsEl) secondsEl.innerHTML = (seconds < 10 ? "0" : "") + seconds;
+        }
             
         // If the count down is finished, write some text
         if (distance < 0) {
