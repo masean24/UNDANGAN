@@ -20,8 +20,9 @@ let musicPlaying = false;
 const music = document.getElementById('backgroundMusic');
 const musicBtn = document.getElementById('musicBtn');
 
-// Target event date for countdown (15 Juli 2025, 09:00:00 WIB)
-const eventDate = new Date("Jul 15, 2025 09:00:00").getTime();
+// Target event date for countdown (12 Juli 2025, 10:00:00 WIB)
+// Perbarui tanggal ini sesuai dengan acara utama
+const eventDate = new Date("Jul 12, 2025 10:00:00").getTime();
 
 // Initialize on page load
 document.addEventListener('DOMContentLoaded', function() {
@@ -132,7 +133,7 @@ async function submitUcapan(event) { // Tambahkan 'async' di sini
             <div style="background: #d4f7d4; color: #2d5a2d; border: 2px solid #90ee90; border-radius: 15px; padding: 20px;">
                 <h4 style="margin-bottom: 10px; font-size: 18px; color: #2d5a2d;">✅ Jazakallahu Khairan, ${senderName}!</h4>
                 <p style="margin-bottom: 10px;">Ucapan dan doa Anda telah terkirim dan tersimpan.</p>
-                <p style="font-style: italic; color: #3a7a3a;">"Semoga Allah membalas kebaikan Anda dan doa Anda menjadi berkah untuk Muhammad Arif! 🤲"</p>
+                <p style="font-style: italic; color: #3a7a3a;">"Semoga Allah membalas kebaikan Anda dan doa Anda menjadi berkah untuk Danish Maleeq Jibrani! 🤲"</p>
             </div>
         `;
         resultDiv.style.display = 'block';
@@ -201,7 +202,7 @@ async function loadUcapan() { // Tambahkan 'async' di sini
             ucapanContainer.innerHTML = `
                 <div class="no-ucapan">
                     <div class="icon">💌</div>
-                    <p>Belum ada ucapan dan doa. Jadilah yang pertama memberikan ucapan tulus Anda untuk Muhammad Arif!</p>
+                    <p>Belum ada ucapan dan doa. Jadilah yang pertama memberikan ucapan tulus Anda untuk Danish Maleeq Jibrani!</p>
                 </div>
             `;
             return;
@@ -211,9 +212,17 @@ async function loadUcapan() { // Tambahkan 'async' di sini
             <div class="ucapan-card">
                 <div class="ucapan-sender">💝 ${ucapan.sender}</div>
                 <div class="ucapan-message">"${ucapan.message}"</div>
-                <div class="ucapan-time">${ucapan.timestamp}</div>
+                <div class="ucapan-time">
+                    ${ucapan.timestamp}
+                </div>
             </div>
-        `).join('');
+        `).join(''); // Hapus tombol hapus untuk saat ini
+        // Tombol hapus tidak ada di sini lagi karena akan ditambahkan dengan cara lain jika diminta
+
+        // Tidak ada event listener untuk tombol hapus di sini, karena tombol hapusnya dihapus dari map
+        // document.querySelectorAll('.delete-ucapan-btn').forEach(button => {
+        //     button.addEventListener('click', deleteUcapan);
+        // });
 
     } catch (error) {
         console.error("Error getting documents: ", error);
@@ -240,12 +249,7 @@ function startCountdown() {
             
         // Display the result in the corresponding elements
         const daysEl = document.getElementById("days");
-        const hoursEl = document.getElementById("hours");
-        const minutesEl = document.getElementById("minutes");
-        const secondsEl = document.getElementById("seconds");
-
-        if (daysEl && hoursEl && minutesEl && secondsEl) { // Check if elements exist
-            daysEl.innerHTML = (days < 10 ? "0" : "") + days;
+        const hoursEl = document = (days < 10 ? "0" : "") + days;
             hoursEl.innerHTML = (hours < 10 ? "0" : "") + hours;
             minutesEl.innerHTML = (minutes < 10 ? "0" : "") + minutes;
             secondsEl.innerHTML = (seconds < 10 ? "0" : "") + seconds;
@@ -269,15 +273,15 @@ function startCountdown() {
 
 // Function to save event to Google Calendar
 function saveEventToCalendar() {
-    const eventTitle = encodeURIComponent("Walimatul Khitan Muhammad Arif");
-    const eventLocation = encodeURIComponent("Masjid Al-Ikhlas, Jl. Mawar No. 123, Jakarta Selatan");
-    const eventDescription = encodeURIComponent("Syukuran Walimatul Khitan putra kami Muhammad Arif. Semoga menjadi anak yang sholeh dan berbakti kepada orang tua.");
+    const eventTitle = encodeURIComponent("Walimatul Khitan Danish Maleeq Jibrani");
+    const eventLocation = encodeURIComponent("Kediaman Bapak Sarmadi, Jl. Japos Raya Pondok Jati Utara, RT. 05 RW. 03, Gg Liyas Kel. Jurangmangu Barat, Kec Pondok Aren, Kota Tangerang Selatan");
+    const eventDescription = encodeURIComponent("Syukuran Walimatul Khitan putra kami Danish Maleeq Jibrani. Semoga menjadi anak yang sholeh dan berbakti kepada orang tua.");
     
-    // Event Start Time: 15 Juli 2025, 09:00 WIB
-    // Event End Time: 15 Juli 2025, 12:00 WIB
-    const startDate = new Date(2025, 6, 15, 9, 0, 0); // Month is 0-indexed (July is 6)
-    const endDate = new Date(2025, 6, 15, 12, 0, 0); 
-    
+    // Event Start Time: 12 Juli 2025, 10:00 WIB
+    // Event End Time: 12 Juli 2025, Selesai (asumsi 13:00 WIB)
+    const startDate = new Date(2025, 6, 12, 10, 0, 0); // Month is 0-indexed (July is 6)
+    const endDate = new Date(2025, 6, 12, 13, 0, 0); // Asumsi selesai jam 1 siang
+
     const formatForGoogleCalendar = (date) => {
         const pad = (num) => num < 10 ? '0' + num : num;
         return `${date.getFullYear()}${pad(date.getMonth() + 1)}${pad(date.getDate())}T` +
